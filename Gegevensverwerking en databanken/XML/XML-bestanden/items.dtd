@@ -1,0 +1,9 @@
+﻿<!ELEMENT items (item*)>
+<!ELEMENT item (categorie, omschrijving, prijs)>
+<!ELEMENT categorie (#PCDATA)>
+<!ELEMENT omschrijving (#PCDATA)>
+<!ELEMENT prijs (#PCDATA)>
+<!ATTLIST item id ID #REQUIRED>
+<!ATTLIST prijs valuta (EUR|USD) "EUR">
+<!ENTITY Cat1 "CD">
+<!ENTITY Cat2 "Boek">

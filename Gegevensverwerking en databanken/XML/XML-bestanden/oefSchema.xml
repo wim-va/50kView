@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<cursisten xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="oefSchema.xsd" >
+   <cursist id="k1">
+      <naam>Joske</naam>
+      <pc>pc101</pc>
+   </cursist>
+   <cursist id="k2">
+      <naam>Lewieke</naam>
+      <pc>pc101</pc>
+   </cursist>
+   <cursist id="k3">
+      <naam>Jantje</naam>
+      <pc>pc102</pc>
+   </cursist>
+</cursisten>

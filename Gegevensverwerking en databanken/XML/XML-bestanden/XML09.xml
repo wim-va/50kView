@@ -1,0 +1,15 @@
+<?xml version="1.0" ?> 
+
+<!-- File Name: XML09.xml -->
+
+<!DOCTYPE inventaris
+	[
+	<!ELEMENT inventaris (cd)+>
+	<!ELEMENT cd (#PCDATA)>
+	]
+>
+
+<inventaris>
+	<cd>Viool Concert in D</cd>
+	<cd>Clouseau</cd>
+</inventaris>

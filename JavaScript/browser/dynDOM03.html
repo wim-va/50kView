@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM manipulatie: voorbeeld 3</title>
+<script>
+var lijstje = ["brood", "kaas", "boter", "ham"];
+
+window.onload = function(){
+    maakHoofding();
+    maakLijst();
+    maakKnop();
+    document.getElementById("btnSwitch").onclick = wijzigLijstitemsInButtons;
+}
+
+function maakHoofding(){
+    var h2 = document.createElement("h2");
+    h2.innerText = "Boodschappenlijstje";
+    document.body.appendChild(h2);
+}
+
+function maakLijst(){
+    var ul = document.createElement("ul");
+    document.body.appendChild(ul);
+    var li;
+    for(var i=0; i<lijstje.length; i++){
+        li = document.createElement("li");
+        li.innerText = lijstje[i];
+        ul.appendChild(li);
+    }
+}
+
+function maakKnop(){
+    var btn = document.createElement("input");
+    btn.type = "button";
+    btn.value = "bestellen";
+    btn.onclick = function(){
+        alert("uw bestelling wordt verwerkt");
+    }
+    document.body.appendChild(btn);
+}
+
+function wijzigLijstitemsInButtons(){
+    var div = document.createElement("div");
+    var ul = document.getElementsByTagName("ul")[0];
+    var btn;
+    for(var i=0; i< ul.childNodes.length; i++){
+        btn = document.createElement("button");
+        btn.type="button";
+        btn.innerText= ul.childNodes[i].innerText;
+        div.appendChild(btn);
+    }
+    document.body.replaceChild(div, ul);
+}
+</script>
+</head>
+<body>
+    <h1>Onderstaande elementen zijn dynamisch toegevoegd</h1>
+    <input type="button" value="switch" id="btnSwitch" />
+</body>
+</html>

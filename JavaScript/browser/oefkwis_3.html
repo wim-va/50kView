@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Een kwis</title>
+<style type="text/css">
+<!--
+   	.vet {
+   		font-weight:bold
+   	}
+	.vetrood {
+		font-weight:bold;
+	    color:red
+	}
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+'use strict';
+   function controleer(){
+      var aantalJuist=0;
+      if (frmKwis.antwoord1[0].checked){ 
+          aantalJuist++;
+          a1.innerText="Juist";
+          a1.className="vet";		
+      }else{
+          a1.innerText="Fout"
+          a1.className="vetrood";
+      }
+      if (frmKwis.antwoord2[2].checked){ 
+          aantalJuist++;
+          a2.innerText="Juist";
+          a2.className="vet";		
+      }else{
+          a2.innerText="Fout"
+          a2.className="vetrood";
+      }
+      if (frmKwis.antwoord3[1].checked){ 
+          aantalJuist++;
+          a3.innerText="Juist";
+          a3.className="vet";		
+      }else{
+          a3.innerText="Fout"
+          a3.className="vetrood";
+      }
+      window.alert("Aantal juist: "+ aantalJuist);
+   }
+//-->
+</script>
+
+</head>
+<body>
+<h1>De grote webmaster kwis</h1>
+<form name="frmKwis">
+Welke tag gebruik je om een paragraaf af te bakenen? <span id="a1" class="vet"></span><br />
+<input type="radio" name="antwoord1" value="p"/>p<br />
+<input type="radio" name="antwoord1" value="h1"/>h1<br />
+<input type="radio" name="antwoord1" value="a"/>a<br />
+<input type="radio" name="antwoord1" value="v"/>v<br />
+Welke tag gebruik je om een anchor af te bakenen? <span id="a2" class="vet"></span><br />
+<input type="radio" name="antwoord2" value="p"/>p<br />
+<input type="radio" name="antwoord2" value="h1"/>h1<br />
+<input type="radio" name="antwoord2" value="a"/>a<br />
+<input type="radio" name="antwoord2" value="v"/>v<br />
+Welke tag gebruik je om een heading af te bakenen? <span id="a3" class="vet"></span><br />
+<input type="radio" name="antwoord3" value="p"/>p<br />
+<input type="radio" name="antwoord3" value="h1"/>h1<br />
+<input type="radio" name="antwoord3" value="a"/>a<br />
+<input type="radio" name="antwoord3" value="v"/>v<br />
+<input type="button" value="controleer" onclick="controleer()">
+
+</form>
+</body>
+</html>

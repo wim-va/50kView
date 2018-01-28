@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script type="text/javascript" src="OefCustomDirectivesApp.js"></script>
+    <title>AngularJS: Voorbeeld 10 - Custom Directives</title>
+</head>
+
+<body>
+    <h1>custom directives</h1>
+    <h2>element custom directive</h2>
+    <div ng-app="customDirectivesApp">
+        <hello></hello>
+        <hello-again></hello-again>
+        <h2>custom directive met controller</h2>
+        <matrozen></matrozen>
+        <h2>custom directive voor validatie</h2>
+        <form name="form" novalidate>
+            <input type="number" integer ng-model="getal" name="getal" />
+            <span style="color:red">
+            <span ng-show="form.getal.$error.number">Dit is geen geldig getal!</span>
+            <span ng-show="form.getal.$error.integer">Dit is geen geldig geheel getal!</span>
+            </span>
+            <input type="text" starts-with="p" ng-model="woord" name="woord" />
+            <span style="color:red">
+            <span ng-show="form.woord.$error.startsWith">Woord moet beginnen met opgegeven karakters!</span>
+            </span>
+        </form>
+    </div>
+</body>
+
+</html>

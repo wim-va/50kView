@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX: stadia readystate</title>
+    <script>
+        var xmlHttp = false;
+        function loadXMLHttpRequest() {
+            try {  // Firefox/Opera/Safari/IE7+
+                xmlHttp = new XMLHttpRequest();
+            }
+            catch (e) {
+                try { // IE5
+                    xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                }
+                catch (e) {
+                    try { // IE6
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    catch (e) {
+                        alert("Deze browser ondersteunt geen AJAX");
+                    }
+                }
+            }
+        }
+
+        function dataOphalen() {
+            if (xmlHttp) {
+                xmlHttp.open("GET", "data.txt");
+                xmlHttp.onreadystatechange = function () {
+                    var result = document.getElementById("result").innerHTML;
+                    switch (xmlHttp.readyState) {
+                        case 0: result += "aanvraag geïnitialiseerd<br/>";
+                            break;
+                        case 1: result += "aanvraag opgesteld<br/>";
+                            break;
+                        case 2: result += "aanvraag verzonden<br/>";
+                            break;
+                        case 3: result += "aanvraag verwerkt<br/>";
+                            break;
+                        case 4: result += "aanvraag volledig<br/>";
+                    }
+                    document.getElementById("result").innerHTML = result;
+                }
+                xmlHttp.send();
+            }
+        }
+    </script>
+</head>
+<body onload="loadXMLHttpRequest()">
+    <input type="button" value="Haal data op" onclick="dataOphalen();" />
+    <div id="result">
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Oef 10</title>
+<!-- visibility:hidden => er wordt witte ruimte getoond op de plaats van het element -->
+<!-- display:none => element wordt niet getoond (ook geen witte ruimte getoond) -->
+<style type="text/css">
+	.verborgen{visibility:hidden;display:none} 
+	.getoond{color:red;visibility:visible}
+</style>
+<script>
+	function controleerInput(form){
+     	var errorLabel = document.getElementById("errorLabel");
+		var geenLeeftijdLabel = document.getElementById("geenLeeftijdLabel");
+		var geenGetalLabel = document.getElementById("geenGetalLabel");
+		var teJongLabel = document.getElementById("teJongLabel");
+		var resultaat = true;
+		if (form.q.value != ""){
+			errorLabel.className="verborgen";
+		}else{
+			errorLabel.className="getoond";
+			resultaat= false;
+		}
+		var leeftijd = form.leeftijd.value;
+		geenLeeftijdLabel.className="verborgen";
+		geenGetalLabel.className="verborgen";
+		teJongLabel.className="verborgen";
+		if (leeftijd == ""){
+		    geenLeeftijdLabel.className="getoond";
+			resultaat= false;
+		} else	if (isNaN(leeftijd)){
+			geenGetalLabel.className="getoond";
+			resultaat= false;
+		}else if (parseInt(leeftijd,10) < 18){
+			teJongLabel.className="getoond";
+			resultaat= false;
+		}
+		return resultaat;
+	}
+</script>
+</head>
+<body>
+<form id="form1" action="http://www.google.be/search" method="get" onsubmit="return controleerInput(this);">
+zoekterm: <input type="text" name="q" /> <span id="errorLabel" class="verborgen">Zoekterm moet worden ingevuld</span><br />
+leeftijd: <input type="text" name="leeftijd" /> 
+<span id="geenLeeftijdLabel" class="verborgen">Leeftijd moet worden ingevuld</span>
+<span id="geenGetalLabel" class="verborgen">Leeftijd moet een getal zijn</span>
+<span id="teJongLabel" class="verborgen">Je bent te jong</span><br />
+<input type="submit" name="knop" value="klikken" />
+</form>
+</body>
+</html>

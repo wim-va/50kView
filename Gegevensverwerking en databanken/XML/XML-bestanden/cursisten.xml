@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- cursisten.xml -->
+<cursisten>
+  <cursist>
+     <naam>Joske</naam>
+     <pc>PC01</pc>
+  </cursist>
+  <cursist>
+     <naam>Lowieke</naam>
+     <pc>PC01</pc>
+  </cursist>
+</cursisten>

@@ -1,0 +1,8 @@
+<div>
+Een tabel met de namen van alle piraten:
+<table border="1">
+<tr ng-repeat="piraat in piraten">
+<td>{{ piraat.id }}</td><td>{{ piraat.naam }}</td><td><a href="{{'#piraten/' + piraat.id}}">details</a></td>
+</tr>
+</table>
+</div>

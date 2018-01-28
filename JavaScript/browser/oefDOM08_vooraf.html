@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Oefening DOM08 - vooraf</title>
+    <script>
+    var teller = 0;
+    
+    window.onload = init;
+
+    function init(){
+        document.getElementById("btn").onclick = tel;
+    }
+
+    function tel(){
+      //  var teller=0;
+        teller++;
+        alert("de teller is nu "+ teller);
+    }
+    </script>
+</head>
+<body>
+<form>
+    <input type="button" id="btn" value="verhoog teller">
+</form>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>oefening AJAX - musea 2</title>
+  </head>
+<body onload="dataOphalen()">
+<h1>Musea in Antwerpen en Brussel</h1>
+<div id="txtHintApen">De gegevens van Antwerpen worden opgehaald...</div>
+<div id="txtHintBxl">De gegevens van Brussel worden opgehaald...</div>
+<table id = "theTable"></table>
+
+<script>
+function dataOphalen(){
+  museaOphalen("http://datasets.antwerpen.be/v4/gis/museumoverzicht.xml", museaApenTonen);
+  museaOphalen("http://opendata.brussel.be/api/records/1.0/search/?dataset=musea-in-brussel&rows=100", museaBxlTonen);
+}
+
+function museaOphalen(url, fie) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        fie(this);
+    }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();   
+} 
+
+function museaApenTonen(xhttp){
+   document.getElementById("txtHintApen").innerHTML = "";
+   var records= xhttp.responseXML.getElementsByTagName('record');
+        for(var i=0; i < records.length; i++){
+            addRow( "Antwerpen", records[i].getElementsByTagName('naam')[0].textContent,
+             records[i].getElementsByTagName('straat')[0].textContent + " "+
+             records[i].getElementsByTagName('huisnummer')[0].textContent,
+             records[i].getElementsByTagName('point_lat')[0].textContent,
+             records[i].getElementsByTagName('point_lng')[0].textContent);
+        }
+}
+
+function museaBxlTonen(xhttp){
+  document.getElementById("txtHintBxl").innerHTML = "";
+  var jsonObj = JSON.parse(xhttp.responseText);
+  var arr = jsonObj.records;
+  for (var i = 0; i < arr.length; i++) {
+      addRow("Brussel", arr[i].fields.naam_van_het_museum,
+        arr[i].fields.adres, 
+        arr[i].fields.latitude_breedtegraad, arr[i].fields.longitude_lengtegraad);
+  }
+}
+
+function addRow(stad, naam, adres, lat, long){
+ var table = document.getElementById('theTable');
+ var row = table.insertRow(0);
+ var cell0 = row.insertCell(0);
+ cell0.innerHTML = stad;
+ var cell1 = row.insertCell(1);
+ cell1.innerHTML = naam;
+ var cell2 = row.insertCell(2);
+ cell2.innerHTML = adres;
+ var cell3 = row.insertCell(3);
+ cell3.innerHTML = lat;
+ var cell4 = row.insertCell(4);
+ cell4.innerHTML = long;
+}
+</script>
+
+</body>
+</html>

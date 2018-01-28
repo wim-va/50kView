@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Oefening web storage</title>
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Bitter|Ubuntu+Mono'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="oefvoorkeuren.css">
+</head>
+<body>
+	<div class="wrapper" id="content">
+		<h1>web storage</h1>
+		<form>
+			<div>
+				<label for="bgcolor">Achtergrondkleur:</label> <input type="color"
+					id="bgcolor" value="#FF0000">
+			</div>
+			<div>
+				<label for="font">Fontstyle:</label> <select id="font">
+					<option value="'Open Sans Condensed', sans-serif" selected>Sans-serif</option>
+					<option value="'Bitter', serif">Serif</option>
+					<option value="'Ubuntu Mono'">Monospace</option>
+				</select>
+			</div>
+			<div>
+				<label for="image">Afbeelding:</label> <select id="image">
+					<option value="images/firefoxos.png" selected>Firefox</option>
+					<option value="images/crocodile.png">Krokodil</option>
+					<option value="images/tortoise.png">Schildpad</option>
+				</select>
+			</div>
+		</form>
+		<img src="images/firefoxos.png">
+	</div>
+</body>
+<script type="text/javascript" src="oefvoorkeuren.js"></script>
+</html>

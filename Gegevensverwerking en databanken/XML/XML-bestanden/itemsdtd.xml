@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE items SYSTEM "items.dtd">
+<!--Een XML bestand met CD- en boekdata -->
+<items>
+	<item id="id1">
+		<categorie>&Cat1;</categorie>
+		<omschrijving>&apos;s Nachts kouder dan XML</omschrijving>
+		<prijs>5.20</prijs> 
+	</item>
+	<item id="id2">
+		<categorie>&Cat2;</categorie>
+		<omschrijving>XML Family of Specifications</omschrijving>
+		<prijs valuta="USD">49.99</prijs>
+	</item>
+	<item id="id3">
+		<categorie>&Cat1;</categorie>
+		<omschrijving>Ethisch XML</omschrijving>
+		<prijs>3.20</prijs>
+	</item>
+</items>

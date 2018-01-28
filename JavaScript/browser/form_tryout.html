@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>probeersels met invoerelementen en forms</title>
+<script>
+'use strict';
+
+window.onload = init;
+
+function init(){
+    var btn = document.getElementById("btn");
+    btn.onclick = verwerk;
+}
+
+function verwerk(){
+    var chb = frm.chbWakker;
+    var isAangevinkt = chb.checked;
+    var koffieGekozen = frm.drank[0].checked;
+    if(isAangevinkt == true){
+         alert("Bent u al aan het werken?");
+         if(frm.drank[2].checked){
+            alert("Helaas... de chocomelk is op.");
+         }
+    }
+    else{
+        if(koffieGekozen){
+            alert("Uw koffie komt eraan");
+        }
+        else{
+            alert("Wij serveren enkel koffie aan mensen die niet wakker zijn");
+        }
+    }
+    var indexGekozenOptie = frm.selOntbijt.selectedIndex;
+    var valueGekozenOptie = frm.selOntbijt[indexGekozenOptie].value;
+    alert("U koos ontbijt nr " + (indexGekozenOptie + 1) + " - waarde: " + valueGekozenOptie);
+}
+</script>
+</head>
+<body>
+    <form name="frm">
+        <label>ik ben wakker<input type="checkbox" name="chbWakker" ></label><br/>
+        <label>Kies uw drank: </label>
+        <label for="rbKoffie">Koffie</label><input type="radio" id="rbKoffie" name="drank" checked>
+        <label for="rbThee">Thee</label><input type="radio" id="rbThee" name="drank">
+        <label for="rbChoco">Chocomelk</label><input type="radio" id="rbChoco" name="drank">
+        <label for="rbMelk">Melk</label><input type="radio" id="rbMelk" name="drank">
+        <br/>
+        <label for="ontbijt">Kies uw ontbijt: </label>
+        <select name="selOntbijt" id="ontbijt">
+            <option value="T">toast</option>
+            <option value="C">croissant</option>
+            <option value="K">koffiekoek</option>
+            <option value="O">ontbijtgranen</option>
+        </select>
+        <br/><input type="button" id="btn" value="OK">
+    </form>
+</body>
+</html>

@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Oefening DOM 13alt</title>
+    <script>
+        function verplaats(bronnaam, doelnaam) {
+            var form = document.forms[0];
+            var bronSelect = form.elements[bronnaam];
+            var optieIndex = bronSelect.selectedIndex;
+            var optie = bronSelect.options[optieIndex];
+            var doelSelect = form.elements[doelnaam];
+            //bronSelect.remove(optieIndex);  // overbodig 
+            doelSelect.options.add(optie);
+            maakKnoppenBeschikbaar();
+        }
+        function naarRechts(){
+            verplaats('namenLinks', 'namenRechts');
+        }
+        function naarLinks(){
+            verplaats('namenRechts', 'namenLinks');
+        }
+        function maakKnoppenBeschikbaar() {
+            document.forms[0].btnNaarRechts.disabled = document.forms[0].namenLinks.selectedIndex == -1;
+            document.forms[0].btnNaarLinks.disabled = document.forms[0].namenRechts.selectedIndex == -1;
+        }
+        function voegToe() {
+            var form = document.forms[0];
+            var naam = form.naamVeld.value;
+            var optie = document.createElement('option');
+            optie.text = naam;
+            form.namenLinks.options[form.namenLinks.options.length] = optie;
+            form.naamVeld.value = "";
+            form.naamVeld.focus();
+        }
+        function init(){
+	        document.getElementById("btnVoegToe").onclick = voegToe;
+  	        document.getElementById("btnNaarLinks").onclick = naarLinks;
+  	        document.getElementById("btnNaarRechts").onclick = naarRechts;
+            document.getElementById("namenLinks").onchange = maakKnoppenBeschikbaar;
+            document.getElementById("namenRechts").onchange = maakKnoppenBeschikbaar;
+            maakKnoppenBeschikbaar();
+}
+window.onload = init;
+</script>
+
+</head>
+<body>
+    <form id="form1" action="" >
+    Naam:
+    <input type="text" name="naamVeld" /><input type="button" value="Toevoegen" id="btnVoegToe" /><br />
+    <select name="namenLinks" size="5" style="width: 100px" id="namenLinks">
+        <option>Jan</option>
+        <option>Piet</option>
+     </select>
+     <input type="button" name= "btnNaarRechts" style="width: 25px" value=">" id="btnNaarRechts"  />
+     <input type="button" name="btnNaarLinks" style="width: 25px" value="<" id="btnNaarLinks" />
+     <select name="namenRechts" size="5" style="width: 100px" id="namenRechts">
+        <option>Joris</option>
+        <option>Corneel</option>
+     </select>
+    </form>
+</body>
+</html>

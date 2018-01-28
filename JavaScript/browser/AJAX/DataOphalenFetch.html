@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX: data ophalen met fetch</title>
+    <script>
+        function dataOphalen() {
+            fetch("data.txt").then(function(response){
+                return response.text();
+            }).then( function(responseText){
+                 document.getElementById("result").innerHTML =
+                         "<pre>" + responseText + "</pre>";
+            });
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="Haal data op" onclick="dataOphalen()" />
+    <div id="result">
+    </div>
+</body>
+</html>

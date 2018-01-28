@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Foutboodschappen</title>
+<style type="text/css">
+	.verborgen{visibility:hidden}
+	.getoond{color:red;visibility:visible}
+</style>
+<script>
+ function controleerInput(form){
+   var errorLabel = document.getElementById("errorLabel");
+   if (form.q.value != ""){
+	errorLabel.className="verborgen";
+	return true;
+   }else{
+	errorLabel.className="getoond";
+	return false;
+   }
+ }
+</script>
+</head>
+<body>
+<form id="form1" action="http://www.google.be/search" method="get" onsubmit="return controleerInput(this);">
+zoekterm: <input type="text" name="q" /> <span id="errorLabel" class="verborgen">Zoekterm moet worden ingevuld</span><br />
+<input type="submit" name="knop" value="klikken" />
+</form>
+</body>
+</html>

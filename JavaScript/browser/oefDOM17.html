@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Oefening DOM 17</title>
+<script>
+function verander(waarde){
+  /*
+  var index = waarde.indexOf("&");
+  while(index != -1){
+    waarde = waarde.substr(0,index) + "and" +  
+      waarde.substr(index+1,waarde.length-index);
+	  index = waarde.indexOf("&");
+    }
+    */
+    // met reg expr:
+  waarde = waarde.replace(/&/g, "and");
+  return waarde;
+}
+function vervangAmpersands(e){
+  var tekstvak = e.target;
+  tekstvak.value = verander(tekstvak.value);
+}
+function init(){
+  var invoervelden = document.getElementsByTagName("input");
+  for(var i=0; i< invoervelden.length; i++){
+    if(invoervelden[i].type=="text"){
+      invoervelden[i].onblur = vervangAmpersands;
+    }
+  }
+}
+window.onload = init;
+</script>
+
+<body>
+<form id="invulFrm">
+naam: <input type="text" id = "naam" />
+voornaam: <input type="text" id="voornaam" />
+</form>
+
+</body>
+</html>

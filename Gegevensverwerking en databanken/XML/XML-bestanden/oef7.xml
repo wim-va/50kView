@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<!DOCTYPE werknemers SYSTEM "oef7.dtd" >
+<werknemers>
+	<afdeling id="magazijn">
+		<arbeider>
+			<naam>Jan</naam>
+			<loon>2200</loon>
+		</arbeider>
+		<arbeider>	
+			<naam>Piet</naam>
+			<loon>1750.75</loon>
+		</arbeider>
+	</afdeling>
+	<afdeling id="marketing">
+		<arbeider>
+			<naam>Jan</naam>
+			<loon>1550</loon>
+		</arbeider>
+		<bediende>
+			<naam>Joris</naam>
+			<loon>2525.25</loon>
+		</bediende>
+	</afdeling>
+</werknemers>

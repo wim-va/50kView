@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Web Storage - voorbeeld 1</title>
+<script>
+function storeSessionStorage(){
+	//Store value on browser for duration of the session
+	// sessionStorage.setItem('teller', '0');
+	// of:
+	sessionStorage['teller'] = 0;
+}
+
+function showSessionStorage(){
+	// Retrieve value (gets deleted when browser is closed and re-opened)
+	// alert(sessionStorage.getItem('teller'));
+	// of:
+	alert(sessionStorage['teller']);
+}
+
+function incrementSessionStorage(){
+	var value = parseInt(sessionStorage.getItem('teller')) + 1;
+	// sessionStorage.setItem('teller', value);
+	// of:
+	sessionStorage['teller'] = value;
+}
+
+function storeLocalStorage(){
+	//Store value on browser beyond the duration of the session
+	// var value = localStorage.getItem('teller');
+	// of:
+	var value = localStorage['teller'];
+	if(value == null){
+		// key does not exist
+		// localStorage.setItem('teller', '0');
+		// of:
+		localStorage['teller'] = 0;
+	}
+}
+
+function showLocalStorage(){
+	// Retrieve value (persists even after closing and re-opening the browser)
+	// alert(localStorage.getItem('teller'));
+	// of:
+	alert(localStorage['teller']);
+}
+
+function incrementLocalStorage(){
+	// var value = parseInt(localStorage.getItem('teller')) + 1;
+	// localStorage.setItem('teller', value);
+	// of:
+	var value = parseInt(localStorage['teller']) + 1;
+	localStorage['teller'] = value;
+}
+
+</script>
+
+</head>
+<body onload="storeSessionStorage(); storeLocalStorage();">
+<h1>Variabelen in de webstorage maken, veranderen en opvragen</h1>
+<h3>sessionStorage</h3>
+<h4>Tijdelijk, verdwijnt zodra dit tabblad/window gesloten wordt.</h4>
+<input type="button" onclick="incrementSessionStorage()" value="increment">
+<input type="button" onclick="showSessionStorage()" value="show">
+<h3>localStorage</h3>
+<h4>Stockeert waarden lokaal en blijft bestaan, zelfs als dit tabblad/window gesloten wordt.</h4>
+<input type="button" onclick="incrementLocalStorage()" value="increment">
+<input type="button" onclick="showLocalStorage()" value="show">
+</body>
+<h4>Vraag deze pagina eens op in verschillende browsers, en ook in dezelfde browser maar in een andere sessie ...</h4>
+</html>

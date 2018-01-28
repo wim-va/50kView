@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Oefening DOM 14</title>
+<script>
+function zetCheckBoxen(){
+	var form = document.forms[0];
+	for (var i=0;i<form.elements.length;i++){
+		if (form.elements[i].type=="checkbox"){
+			form.elements[i].checked=true;
+		}
+	}
+}
+function init(){
+  document.getElementById("btn").onclick = zetCheckBoxen;
+}
+window.onload = init;
+</script>
+</head>
+<body>
+<form id="form1" action="">
+Naam: <input type="text" name="naamVeld" /><br />
+<input type="checkbox" name="kortingVeld" />korting? <br />
+<input type="radio" name="geslacht" value="m" />mannelijk<br />
+<input type="radio" name="geslacht" value="v" />vrouwelijk<br />
+<input type="checkbox" name="lidVeld" />lid?<br />
+<input type="button" value="klik" id="btn" />
+</form>
+</body>
+</html>

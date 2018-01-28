@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<title>AngularJS: voorbeeld 4</title>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+Voornaam: <input type="text" ng-model="voornaam"><br />
+Familienaam: <input type="text" ng-model="familienaam"><br />
+ <br />
+Volledige naam: {{( voornaam | lowercase )+ " " + (familienaam | uppercase) }}
+<br />
+Volledige naam, berekend met functie:  {{naam() | uppercase}}
+<div ng-init="aantal=1; prijs=2.5">
+<label for="nrAantal">Aantal:</label><input id="nrAantal" type="number"  ng-model="aantal"/> <br/>
+<label for="nrPrijs">Eenheidsprijs:</label><input id="nrPrijs" type="number"  ng-model="prijs"/> <br/>
+<p>Totaal: <span ng-bind="aantal*prijs | currency "></span></p>
+</div>
+<div ng-init="piraten=['Jan','Piet','Joris', 'Korneel']">
+Een alfabetisch gesorteerd lijstje met piraten:
+<ul>
+<li ng-repeat="piraat in piraten | orderBy">
+{{ piraat }}
+</li>
+</ul>
+</div>
+<div>
+Zoekterm: <input type="text" ng-model="zoekterm"/> <br />
+Een alfabetisch gesorteerd lijstje met piraten wiens naam de ingetikte tekenreeks bevat:  
+<ul>
+<li ng-repeat="piraat in piraten | filter:zoekterm | orderBy">
+{{ piraat }}
+</li>
+</ul>
+</div>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.voornaam= "Joske";
+    $scope.familienaam= "Vermeulen";
+    $scope.naam = function() {
+        return $scope.voornaam+ " " + $scope.familienaam;
+    }
+});
+</script>
+
+</body>
+</html>

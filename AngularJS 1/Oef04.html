@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <title>AngularJS: oefening currency convertor</title>
+</head>
+
+<body ng-app="currencyApp" ng-controller="currencyCtrl">
+    <h1>Currency convertor</h1>
+    <input type="number" ng-model="bedrag">
+    <select ng-options="munt for munt in munteenheden" ng-model="bronMunt">
+        </select>
+    <button ng-disabled="bronMunt==doelMunt  || bedrag == 0" ng-click="converteer()">Converteer</button>
+    <select ng-options="munt for munt in munteenheden" ng-model="doelMunt">
+</select>
+    <input type="text" disabled="true" ng-model="wisselkoers">
+    <script src="Oef04App.js"></script>
+    <script src="Oef04Ctrl.js"></script>
+</body>
+
+</html>

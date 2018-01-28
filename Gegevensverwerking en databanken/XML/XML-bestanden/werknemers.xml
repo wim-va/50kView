@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE werknemers SYSTEM "werknemers.dtd">
+<werknemers>
+  <werknemer>
+    <naam>Jan</naam>
+    <bedrijf>&bedrijf;</bedrijf>
+  </werknemer>
+  <werknemer>
+    <naam>Mieke</naam>
+    <bedrijf>&bedrijf;</bedrijf>
+  </werknemer>
+</werknemers>

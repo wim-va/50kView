@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Select en option</title>
+<script type="text/javascript" >
+function voegNaamToe(){
+	var naam = frm.naamVeld.value;
+	var nieuweOption = document.createElement('option');
+	nieuweOption.value = naam;
+	nieuweOption.text = naam;
+	frm.namen.add(nieuweOption);
+//	frm.namen.options[frm.namen.options.length]=nieuweOption;
+//	frm.naamVeld.value="";
+}
+</script>
+</head>
+<body>
+<form name="frm">
+Naam: <input type="text" name="naamVeld" /><br />
+<select name="namen" size="5" style="width:100px">
+</select>
+<input type="button" value="klik" onclick="voegNaamToe();" />
+</form>
+</body>
+</html>

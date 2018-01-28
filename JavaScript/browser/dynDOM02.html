@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM manipulatie: voorbeeld 2</title>
+<script>
+window.onload = function(){
+    document.getElementById("btnVerwijderKnop").onclick = verwijderKnop;
+    document.getElementById("btnVerwijderParagrafen").onclick = verwijderParagrafen;
+    document.getElementById("btnVerwijderDiv").onclick = verwijderDiv;
+}
+
+function verwijderKnop(){
+    var btn = document.getElementById("btnVerwijderKnop");
+    document.body.removeChild(btn);
+}
+
+function verwijderParagrafen(){
+    var div = document.getElementById("eenDiv");
+    if(div){
+        var pars = div.getElementsByTagName("p");
+        for(var i=pars.length - 1; i >= 0; i--){
+            div.removeChild(pars[i])
+        }
+    }
+}
+
+function verwijderDiv(){
+    var div = document.getElementById("eenDiv");
+    if(div){
+        document.body.removeChild(div);
+    }
+}
+</script>
+</head>
+<body>
+    <h1>In dit voorbeeld verwijderen we dynamisch elementen uit de DOM-tree</h1>
+    <input type="button" id="btnVerwijderKnop" value="verwijder deze knop"/>
+    <input type="button" id="btnVerwijderParagrafen" value="verwijder paragrafen uit onderstaande div"/>
+    <input type="button" id="btnVerwijderDiv" value="verwijder onderstaande div"/>
+    <div id="eenDiv">
+        <p>blablablablabla</p>
+        <p>nog meer blablablablabla</p>
+        <p>en nog meer blablablablabla</p>
+        <input type="text" id="txt"/>
+        <input type="button" />
+    </div>
+</body>
+</html>

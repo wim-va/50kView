@@ -1,0 +1,69 @@
+<!--met dank aan Senne ; -) -->
+<!DOCTYPE html>
+<html lang="en">
+<meta  charset="utf-8" />
+<head>
+  <title>Oefening DOM09 (schildpad en haas) </title>
+</head>
+
+<body>
+<script>
+const LEEG = "&nbsp;", SCHILDPAD = "🐢", HAAS = "🐰", BOTSING = "💥", AFSTAND = 70
+var racebaan = new Array(AFSTAND)
+var winnaar = ""
+var positieHaas = 0, positieSchildpad = 0
+
+function beweegSchildpad() {
+    var schildpad, percentS = parseInt(Math.random() * 100 + 1)
+    switch (true) {
+        case (percentS <= 50): schildpad = 3; break;
+        case (percentS <= 70): schildpad = -6; break;
+        case (percentS <= 100): schildpad = 1; break;
+    }
+    racebaan[positieSchildpad] = LEEG
+    positieSchildpad += schildpad
+    if (positieSchildpad < 0) { positieSchildpad = 0 }
+    else if (positieSchildpad >= AFSTAND) { positieSchildpad = AFSTAND - 1 }
+    racebaan[positieSchildpad] = SCHILDPAD
+}
+
+function beweegHaas() {
+    var haas, percentH = parseInt(Math.random() * 100 + 1)
+    switch (true) {
+        case (percentH <= 20): haas = 0; break;
+        case (percentH <= 40): haas = 9; break;
+        case (percentH <= 50): haas = -12; break;
+        case (percentH <= 80): haas = 1; break;
+        case (percentH <= 100): haas = -2; break;
+    }
+    racebaan[positieHaas] = LEEG
+    positieHaas += haas
+    if (positieHaas < 0) { positieHaas = 0 }
+    else if (positieHaas >= AFSTAND) { positieHaas = AFSTAND - 1 }
+    racebaan[positieHaas] = HAAS
+}
+
+function bepaalWinnaar(){
+    if (positieSchildpad == AFSTAND - 1  && positieHaas == AFSTAND - 1) { winnaar = "Schildpad en de Haas! 😱" }
+    else if (positieSchildpad == AFSTAND - 1){ winnaar = "Schildpad"}
+    else if (positieHaas == AFSTAND - 1) {winnaar = "Haas"}
+}
+
+function start() {
+    racebaan.fill(LEEG)
+    while (winnaar == "") {
+        beweegSchildpad()
+        beweegHaas()
+        bepaalWinnaar()
+        if (positieSchildpad == positieHaas) {
+            racebaan[positieSchildpad] = BOTSING
+        }
+        document.write("<br>" + racebaan.join("„"))
+    }
+}
+
+start()
+document.write("<br>De winnaar is de " + winnaar)
+</script>
+</body>
+</html>

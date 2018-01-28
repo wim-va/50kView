@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX: XML ophalen (2)</title>
+    <script>
+        var xmlHttp = false;
+        function loadXMLHttpRequest() {
+            try {  // Firefox/Opera/Safari/IE7+
+                xmlHttp = new XMLHttpRequest();
+            }
+            catch (e) {
+                try { // IE5
+                    xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                }
+                catch (e) {
+                    try { // IE6
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    catch (e) {
+                        alert("Deze browser ondersteunt geen AJAX");
+                    }
+                }
+            }
+        }
+
+        function dataOphalen() {
+            if (xmlHttp) {
+                xmlHttp.open("GET", "ploeg.xml");
+                xmlHttp.onreadystatechange = function () {
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                        document.getElementById("result").innerHTML = "";
+                        var xmlDoc = xmlHttp.responseXML;
+                        var spelers = xmlDoc.getElementsByTagName("speler");
+                        var header = document.createElement("h1");
+                        header.innerHTML = "Overzicht spelers";
+                        document.getElementById("result").appendChild(header);
+                        var list = document.createElement("ul");
+                        document.getElementById("result").appendChild(list);
+                        for (var i = 0; i < spelers.length; i++) {
+                            var speler = spelers[i];
+                            var id = speler.attributes["id"].nodeValue;
+                            var naamNodes = speler.getElementsByTagName("naam");
+                            var naam = naamNodes[0].firstChild.nodeValue;
+                            var itemNode = document.createElement("li");
+                            var naamNode = document.createTextNode("(" + id + ") " + naam);
+                            itemNode.appendChild(naamNode);
+                            list.appendChild(itemNode);
+                        }
+                    }
+                }
+                xmlHttp.send();
+            }
+        }
+    </script>
+</head>
+<body onload="loadXMLHttpRequest()">
+    <input type="button" value="Haal XML op" onclick="dataOphalen()" />
+    <div id="result">
+    </div>
+</body>
+</html>

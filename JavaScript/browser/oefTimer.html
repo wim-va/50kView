@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Timer</title>
+
+    <script>
+        'use strict';
+        var maanden = ["Januari", "Februari", "Maart", "April", "Mei", "Juni",
+    "Juli", "Augustus", "September", "Oktober", "November", "December"];
+        var dagen = ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"];
+
+        function toontijd() {
+            var nu = new Date();
+            var jaar = nu.getFullYear();
+            var maandNr = nu.getMonth();
+            var maand = maanden[maandNr];
+            var datum = nu.getDate();
+            var dagNr = nu.getDay();
+            var dag = dagen[dagNr];
+            var uren = nu.getHours();
+            if (uren <= 9)
+                uren = "0" + uren;
+            var minuten = nu.getMinutes();
+            if (minuten <= 9)
+                minuten = "0" + minuten;
+            var seconden = nu.getSeconds();
+            if (seconden <= 9)
+                seconden = "0" + seconden;
+            var tijdWaarde = dag + " " + datum + " " + maand + " " + jaar + " " + uren + ":" + minuten+":"+seconden;
+            document.getElementById("klokbalk").innerHTML = tijdWaarde;
+            setTimeout(toontijd, 1000); // voer function toontijd  binnen 1000 milliseconden uit
+        }
+
+        window.onload = toontijd;
+    </script>
+
+</head>
+<body>
+    <div id="klokbalk" style="background-color: transparent; color: #FF0000;font-size:xx-large">
+    </div>
+</body>
+</html>

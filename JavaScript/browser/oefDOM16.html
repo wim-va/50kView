@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Oefening DOM 15</title>
+<script>
+function laden(){
+	var lijst = new Array("xx-small","x-small","small","medium","large","x-large","xx-large");
+	var form = document.getElementById("form");
+	var select = form.groottes;
+	for (var i=0;i<lijst.length;i++){
+		var option = document.createElement('option');
+		option.value = lijst[i];
+		option.text = lijst[i];
+		select.add(option);
+	}
+}
+function wijzigGrootte(){
+	var form = document.forms[0];
+	var select = form.groottes;
+	var grootte = select.options[select.selectedIndex].value;
+	var span = document.getElementById("spantekst");
+	span.style.fontSize= grootte;
+}
+function init(){
+	laden();
+	document.getElementById("btn").onclick = wijzigGrootte;
+}
+window.onload = init;
+</script>
+</head>
+<body>
+<form id="form">
+<select name="groottes">
+</select>
+<input type="button" value="Wijzig grootte" id="btn"/>
+</form>
+<span id="spantekst">Dit is een tekst</span>
+</body>
+</html>

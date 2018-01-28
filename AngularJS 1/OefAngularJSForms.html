@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Opgave AngularJS Forms</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+<script src="OefAngularJSFormsApp.js"></script>
+<script src="OefAngularJSFormsModel.js"></script>
+<script src="OefAngularJSFormsCtrl.js"></script>
+</head>
+<body ng-app="app" ng-controller="BroodjesController as ctrl">
+	<form ng-submit="ctrl.submit()">
+		Type: <select ng-options="b.naam for b in ctrl.broodjes"
+			ng-model="ctrl.gekozenBroodje"></select><br /> Aantal: <input
+			type="number" ng-model="ctrl.aantal"></input><br /> <input
+			type="submit" value="bestel" />
+	</form>
+	<span ng-show="ctrl.bestelling.bestellijnen[0] != undefined">
+		<table>
+			<tr>
+				<th>Broodje</th>
+				<th>Prijs</th>
+				<th>Aantal</th>
+			</tr>
+			<tr ng-repeat="item in ctrl.bestelling.bestellijnen">
+				<td>{{item.broodje.naam}}</td>
+				<td>{{item.broodje.prijs|currency:"EUR ":2}}</td>
+				<td>{{item.aantal}}</td>
+			</tr>
+		</table> De totaalprijs is {{ctrl.totaalprijs() |currency:"EUR ":2}}
+	</span>
+</body>
+</html>

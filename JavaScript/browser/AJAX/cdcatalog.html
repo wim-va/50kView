@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script>
+    // async versie
+        'use strict';
+        var xml = null, xsl = null, noOfResponses = 0;
+        function loadXMLDoc(filename, fie) {
+            var xhttp;
+            if (window.ActiveXObject) {
+                xhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            else {
+                xhttp = new XMLHttpRequest();
+            }
+            xhttp.open("GET", filename, true);   
+            try { 
+                xhttp.responseType = "msxml-document"; 
+            } catch (err) {
+             } // Helping IE11
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    fie(this);
+                    noOfResponses++; 
+                    if (noOfResponses == 2){
+                        displayResult(this);
+                    }
+                 }
+            }
+            xhttp.send();
+        }
+
+        function setXML(xhttp){
+            xml = xhttp.responseXML; 
+        }
+
+        function setXSL(xhttp){
+            xsl = xhttp.responseXML; 
+        }
+
+        function displayResult(xhttp){
+            // code for IE
+            if (window.ActiveXObject || xhttp.responseType == "msxml-document") {
+                var ex = xml.transformNode(xsl);
+                document.getElementById("example").innerHTML = ex;
+            }
+            // code for Chrome, Firefox, Opera, etc.
+            else if (document.implementation && document.implementation.createDocument) {
+                var xsltProcessor = new XSLTProcessor();
+                xsltProcessor.importStylesheet(xsl);
+                var resultDocument = xsltProcessor.transformToFragment(xml, document);
+                document.getElementById("example").appendChild(resultDocument);
+            }
+        }
+
+        function init(){
+            loadXMLDoc("cdcatalog.xml", setXML);
+            loadXMLDoc("cdcatalog.xsl", setXSL);
+        }
+    </script>
+    </head>
+    <body onload= "init()" >
+        <div id="example" > </div>
+    </body>
+</html>

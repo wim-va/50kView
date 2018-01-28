@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<!--Een XML bestand met CD- en boekdata -->
+<items>
+	<item id="id1">
+		<categorie>CD</categorie>
+		<omschrijving>&apos;s Nachts kouder dan XML</omschrijving>
+		<prijs>5.20</prijs>
+	</item>
+	<item id="id2">
+		<categorie>Boek</categorie>
+		<omschrijving>XML Family of Specifications</omschrijving>
+		<prijs valuta="USD">49.99</prijs>
+	</item>
+	<item id="id3">
+		<categorie>CD</categorie>
+		<omschrijving>Ethisch XML</omschrijving>
+		<prijs>3.20</prijs>
+	</item>
+</items>

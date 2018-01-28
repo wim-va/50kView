@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>XML files transformeren met XSLT</title>
+    <script src="XmlUtil.js"></script>
+    <script>
+        'use strict';
+
+        var XMLPATH = "XML-bestanden/";
+        // om veiligheidsreden geeft een <input type="file"> het pad van het bestand standaard niet terug
+
+        function loadXMLDocIE(filename) {
+            var xhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            xhttp.open("GET", filename, false);
+            try { xhttp.responseType = "msxml-document" } catch (err) { } // Helping IE11
+            xhttp.send();
+            return xhttp.responseXML;
+        }
+
+        function transformIE(xmlFile, xslFile) {
+            var xml = loadXMLDocIE(XMLPATH + xmlFile);
+            var xsl = loadXMLDocIE(XMLPATH + xslFile);
+            // in IE is het niet mogelijk om een Node te verplaatsen naar een andere DOM-tree
+            var result = xml.transformNode(xsl);  // transformNode geeft een string terugs
+            document.getElementById("result").innerHTML = result;
+        }
+
+        function transform(xmlFile, xslFile) {
+            var xml = loadXMLDoc(XMLPATH + xmlFile);
+            var xsl = loadXMLDoc(XMLPATH + xslFile);
+            var xsltProcessor = new XSLTProcessor();
+            xsltProcessor.importStylesheet(xsl);
+            var resultDocument = xsltProcessor.transformToDocument(xml);
+            // afhankelijk van de output method in de stylesheet geeft transformToDocument
+            // een HTMLDocument (HTML DOM-tree) of een XMLDocument (XML DOM-tree) terug
+            document.getElementById("result").innerHTML = resultDocument.documentElement.outerHTML;
+        }
+
+        window.onload = function () {
+            document.getElementById("btnTransform").onclick = function () {
+                var xmlFile = document.getElementById("xmlFile").files[0].name;
+                var xslFile = document.getElementById("xslFile").files[0].name;
+                if ("ActiveXObject" in window) {
+                    // IE
+                    transformIE(xmlFile, xslFile);
+                }
+                else {
+                    transform(xmlFile, xslFile);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <label for="xmlFile">xml-bestand: </label><input type="file" id="xmlFile"> <br>
+        <label for="xslFile">xsl(t)-bestand: </label><input type="file" id="xslFile"> <br>
+        <input type="button" id="btnTransform" value="Transform">
+    </form>
+    <div id="result">
+    </div>
+</body>
+
+</html>

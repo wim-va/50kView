@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Werken met cookies</title>
+    <script>
+        function getCookie(c_name) {
+            if (document.cookie.length > 0) {
+                var c_start = document.cookie.indexOf(c_name + "=");
+                if (c_start != -1) {
+                    c_start = c_start + c_name.length + 1;
+                    c_end = document.cookie.indexOf(";", c_start);
+                    if (c_end == -1) c_end = document.cookie.length;
+                    return decodeURIComponent(document.cookie.substring(c_start, c_end));
+                }
+            }
+            return "";
+        }
+
+        function setCookie(c_name, value, expiredays) {
+            var exdate = new Date();
+            exdate.setDate(exdate.getDate() + expiredays);
+            console.log( c_name + "=" + encodeURIComponent(value) +
+                ((expiredays == null) ? "" : ";expires=" + exdate.toUTCString()));
+            document.cookie = c_name + "=" + encodeURIComponent(value) +
+((expiredays == null) ? "" : ";expires=" + exdate.toUTCString());
+        }
+
+        function checkCookie() {
+            username = getCookie('username');
+            if (username != null && username != "") {
+                alert('Dag ' + username + '!');
+            }
+            else {
+                username = prompt('Tik uw naam in:', "");
+                if (username != null && username != "") {
+                    setCookie('username', username, 365);
+                }
+            }
+        }
+    </script>
+
+</head>
+<body onload="checkCookie();">
+</body>
+</html>

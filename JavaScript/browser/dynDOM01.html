@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM manipulatie: voorbeeld 1</title>
+<script>
+var lijstje = ["brood", "kaas", "boter", "ham"];
+
+window.onload = function(){
+    maakHoofding();
+    maakLijst();
+    maakKnop();
+}
+
+function maakHoofding(){
+    var h2 = document.createElement("h2");
+    h2.innerText = "Boodschappenlijstje";
+    document.body.appendChild(h2);
+}
+
+function maakLijst(){
+    var ul = document.createElement("ul");
+    document.body.appendChild(ul);
+    var li;
+    for(var i=0; i<lijstje.length; i++){
+        li = document.createElement("li");
+        li.innerText = lijstje[i];
+        ul.appendChild(li);
+    }
+}
+
+function maakKnop(){
+    var btn = document.createElement("input");
+    btn.type = "button";
+    btn.value = "bestellen";
+    btn.onclick = function(){
+        alert("uw bestelling wordt verwerkt");
+    }
+    document.body.appendChild(btn);
+}
+</script>
+</head>
+<body>
+    <h1>Onderstaande elementen zijn dynamisch toegevoegd</h1>
+</body>
+</html>

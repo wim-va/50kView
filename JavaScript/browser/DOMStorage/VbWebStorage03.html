@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Web Storage - voorbeeld 3</title>
+</head>
+<body>
+<h1>JSON object in web storage</h1>
+<form>
+<label for="naam">Naam:</label><input type="text" id="naam" placeholder="Tik hier uw naam"><br/>
+<label for="voornaam">Voornaam:</label><input type="text" id="voornaam" placeholder="Tik hier uw voornaam"><br/>
+<input type="button" value="Bewaar" onclick="bewaarPersoonInLocalStorage(this.form.naam.value, this.form.voornaam.value)">
+</form>
+<input type="button" value="Toon" onclick="toonPersoonUitLocalStorage()">
+</body>
+<script>
+function bewaarPersoonInLocalStorage(naam, voornaam){
+	localStorage.setItem('persoon', JSON.stringify({"naam": naam, "voornaam": voornaam}));
+}
+
+function toonPersoonUitLocalStorage(){
+	var persoon = JSON.parse(localStorage.getItem('persoon'));
+	if (persoon != null){
+		alert(persoon.voornaam + " "+ persoon.naam);
+	}
+	else{
+		alert("Er is nog geen persoon bewaard.");
+	}
+}
+</script>
+</html>

@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>TextArea</title>
+<script type ="text/javascript">
+function voegNaamToe(){
+	var naam = frm.naamVeld.value;
+	if (frm.namen.value != ""){
+		frm.namen.value += "\n";
+	}
+	frm.namen.value += naam;
+}
+</script>
+</head>
+<body>
+<form name="frm">
+Naam: <input type="text" name="naamVeld" /><br />
+<textarea name="namen" cols="25">
+</textarea><br />
+<input type="button" value="klik" onclick="voegNaamToe();" />
+</form>
+</body>
+</html>

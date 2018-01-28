@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX: cross domain call (ASP)</title>
+    <script>
+        var xmlHttp = false;
+        function loadXMLHttpRequest() {
+            try {  // Firefox/Opera/Safari/IE7+
+                xmlHttp = new XMLHttpRequest();
+            }
+            catch (e) {
+                try { // IE5
+                    xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                }
+                catch (e) {
+                    try { // IE6
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    catch (e) {
+                        alert("Deze browser ondersteunt geen AJAX");
+                    }
+                }
+            }
+        }
+
+        function dataOphalen() {
+            if (xmlHttp) {
+                var term = document.getElementById("txtZoekterm").value;
+                // cross domain call is niet toegestaan
+                xmlHttp.open("GET", "http://www.google.com/search?q="+term);
+                xmlHttp.onreadystatechange = function () {
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                        document.getElementById("result").innerHTML =
+                        "<h1>Dit is het resultaat van uw zoekactie</h1>" +
+                xmlHttp.responseText;
+                    }
+                }
+                xmlHttp.send();
+            }
+        }
+    </script>
+</head>
+<body onload="loadXMLHttpRequest()">
+    <input type="text" id="txtZoekterm" />
+    <input type="button" value="Zoek op google" onclick="dataOphalen()" />
+    <div id="result">
+    </div>
+</body>
+</html>

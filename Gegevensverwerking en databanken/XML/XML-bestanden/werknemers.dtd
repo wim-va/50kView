@@ -1,0 +1,5 @@
+  <!ENTITY bedrijf "NieuweCevora vzw">
+  <!ELEMENT werknemers (werknemer+)>
+  <!ELEMENT werknemer (naam, bedrijf)>
+  <!ELEMENT naam (#PCDATA)>
+  <!ELEMENT bedrijf (#PCDATA)>

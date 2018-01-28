@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<title>AngularJS: voorbeeld 9</title>
+</head>  
+<body>
+<h1>Enkele functies uit de global API</h1>
+<div ng-app="myApp" ng-controller="myCtrl">
+<p><input type="text"  ng-model="x"  ng-change="bereken()"/></p>
+<h3>Sorry, dit werkt niet (omdat impliciet object angular niet gekend is in expressie !?!):</h3>
+<p>invoer in kleine letters: {{ angular.lowercase(x) }}</p>
+<p>is invoer een string?: {{ angular.isString(x) }}</p> 
+
+<h3>Dit gaat wel goed:</h3>
+<h3>met filters, dynamisch berekend bij wijziging van de invoer</h3>
+<p>invoer in kleine letters: {{ x | lowercase }}</p>
+<p>invoer in hoofdletters: {{ x | uppercase }}</p>
+<h3>met variabelen die in de controller berekend zijn</h3>
+<p>invoer in kleine letters: {{ xKlein }}</p>
+<p>invoer in hoofdletters: {{ xGroot }}</p>
+<p>is invoer een string?: {{ xIsString }}</p>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.x = "Joske";
+    $scope.bereken = function(){
+    	$scope.xKlein = angular.lowercase($scope.x);
+        $scope.xGroot = angular.uppercase($scope.x);
+        $scope.xIsString = angular.isString($scope.x);	
+    };
+    $scope.bereken();
+});
+</script>
+</body>
+</html>

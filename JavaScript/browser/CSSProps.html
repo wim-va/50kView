@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>css properties wijzigen</title>
+
+    <script>
+        var maxBreedte = 200;
+        var maxHoogte = 300;
+        function verplaatsButton(button) {
+            var nieuweLinks = (Math.random() * (maxBreedte)).toFixed(0);
+            var nieuweTop = (Math.random() * (maxHoogte)).toFixed(0);
+            button.style.left = nieuweLinks + "px";
+            button.style.top = nieuweTop + "px";
+        }
+</script>
+
+</head>
+<body>
+    <form>
+    <input type="button" value="Ik wil loonsverhoging" style="position: absolute; top: 20px;
+        left: 20px; width: 140px" onmouseover="verplaatsButton(this);" />
+    </form>
+</body>
+</html>

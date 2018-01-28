@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<title>AngularJS: oefening 1</title>
+</head>
+<body>
+<div ng-app ng-init="aantal=1; prijs=2.5">
+<label for="nrAantal">Aantal:</label><input id="nrAantal" type="number"  ng-model="aantal"/> <br/>
+<label for="nrPrijs">Eenheidsprijs:</label><input id="nrPrijs" type="number"  ng-model="prijs"/> <br/>
+<p>Totaal: <span ng-bind="aantal*prijs"></span></p>
+</div>
+</body>
+</html>

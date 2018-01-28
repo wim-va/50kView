@@ -1,0 +1,11 @@
+	<div>
+		<div class="product row"
+			ng-repeat="product in store1.products | orderBy:'-price'"
+			ng-hide="product.soldOut">
+			<h3>
+				{{ product.name }} <em>({{ product.price | currency}})</em> - 
+				rating: {{product.stars()}} (created on {{ product.createdOn | date }}) <input type="submit"
+					value="Buy" ng-show="product.canBuy" class="pull-right" />
+			</h3>
+		</div>
+	</div>

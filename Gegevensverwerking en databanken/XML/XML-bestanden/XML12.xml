@@ -1,0 +1,19 @@
+<?xml version="1.0" ?> 
+
+<!-- File Name: XML12.xml -->
+
+<!DOCTYPE film
+	[
+	<!ELEMENT film (titel, (ster | regisseur | producent))>
+	<!ATTLIST film	Klasse CDATA "Fictie"	Jaar CDATA #REQUIRED>
+	<!ELEMENT titel (#PCDATA)>
+	<!ELEMENT ster (#PCDATA)>
+	<!ELEMENT regisseur (#PCDATA)>
+	<!ELEMENT producent (#PCDATA)>
+	]
+>
+
+<film Jaar="1972">
+	<titel>Star Wars</titel>
+	<ster>R2D2</ster>
+</film>

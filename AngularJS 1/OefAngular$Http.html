@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>$http service</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+    <script>
+      var app = angular.module("myapp", []);
+      app.controller("MyController",  function($scope, $http){
+         $scope.data = [];
+         $http.get("http://jsonplaceholder.typicode.com/users")
+            .then(function(response){
+                $scope.data = response.data;
+            });
+       });
+  </script>
+ </head>
+ <body ng-app="myapp" ng-controller="MyController as ctrl">
+   <table>
+     <tr><th>Naam</th><th>Stad</th></tr>
+     <tr ng-repeat="item in data">
+         <td>{{item.name}}</td>
+         <td>{{item.address.city}}</td>
+     </tr>
+   </table>
+ </body>
+</html>

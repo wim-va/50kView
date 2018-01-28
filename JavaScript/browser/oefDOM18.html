@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html style="height:100%; min-height:100%; width:100%; min-width:100%">
+<head>
+<title>Oefening DOM 18</title>
+<script>
+var bewegen = false;
+
+function verplaatsTekst(event){
+  if (bewegen){
+    pText.style.left = event.x + "px";
+    pText.style.top = event.y + "px";
+  }
+}
+
+function stopBewegen(event){
+  bewegen = false;
+}
+
+function startBewegen(event){
+// 0 Specifies the left mouse-button
+// 1 Specifies the middle mouse-button
+// 2 Specifies the right mouse-button
+// Internet Explorer 8, and earlier, returns another result:
+// 1 Specifies the left mouse-button
+// 4 Specifies the middle mouse-button
+// 2 Specifies the right mouse-button
+  if(event.button == 0){ // left mouse button pressed  
+    bewegen = true;
+  }
+}
+
+// onderstaande code werkt ook als hoogte en breedte van html- en body-tag niet opgegeven zijn
+document.onmousemove = verplaatsTekst;
+document.onmousedown = startBewegen;
+document.ondblclick = stopBewegen; 
+
+</script>
+
+<body>
+<!-- als hoogte en breedte van html- en body-tag niet opgegeven worden,
+   is body niet schermvullend en werkt onmousemove niet zoals het hoort -->
+<!-- <body onmousemove="verplaatsTekst(event)" style="height:100%; min-height:100%; width:100%; min-width:100%"> -->
+<p id="pText" style="position:absolute; left:10px" >ik volg je overal ...</p>
+</div>
+</body>
+</html>

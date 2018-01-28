@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript: onkeypress</title>
+    <script>
+        function schrijf(e) {
+            var keynum;
+            var keychar;
+            if (window.event) {  // IE
+                keynum = e.keyCode;
+            }
+            else if (e.which) {  // Netscape/FireFox/Opera
+            keynum = e.which;
+        }
+        keychar = String.fromCharCode(keynum);
+        document.getElementById("result").innerHTML += keynum + "= " + keychar + "<br />";
+        }
+        function init(){
+            document.getElementById("invoer").onkeypress = schrijf;
+        }
+        window.onload = init;
+    </script>
+</head>
+<body>
+<form>
+<input type="text" id="invoer"/> <br />
+U tikte deze tekst in: <div id="result"></div>
+</form>
+</body>
+</html>

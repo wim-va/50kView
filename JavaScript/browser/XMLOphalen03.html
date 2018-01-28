@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX: XML ophalen (3)</title>
+    <script>
+        var xmlHttp = false;
+        function loadXMLHttpRequest() {
+            try {  // Firefox/Opera/Safari/IE7+
+                xmlHttp = new XMLHttpRequest();
+            }
+            catch (e) {
+                try { // IE5
+                    xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                }
+                catch (e) {
+                    try { // IE6
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    catch (e) {
+                        alert("Deze browser ondersteunt geen AJAX");
+                    }
+                }
+            }
+        }
+
+        function dataOphalen() {
+            if (xmlHttp) {
+                xmlHttp.open("GET", "ploeg.xml");
+                xmlHttp.onreadystatechange = function () {
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                        var xmlDoc = xmlHttp.responseXML;
+                        var spelers = xmlDoc.getElementsByTagName("speler");
+                        var tabel = document.getElementById("spelersTabel");
+                        var rijen = document.getElementsByTagName("tr");
+                        while(rijen.length > 1){
+                            tabel.children[0].removeChild(rijen[1]);
+                        }
+                        for (var i = 0; i < spelers.length; i++) {
+                            var speler = spelers[i];
+                            var id = speler.attributes["id"].nodeValue;
+                            var naamNodes = speler.getElementsByTagName("naam");
+                            var naam = naamNodes[0].firstChild.nodeValue;
+                            var nieuweRij = tabel.insertRow(i + 1);
+                            var celId = nieuweRij.insertCell(0);
+                            celId.innerHTML = id;
+                            var celNaam = nieuweRij.insertCell(1);
+                            celNaam.innerHTML = naam;
+                        }
+                    }
+                }
+                xmlHttp.send();
+            }
+        }
+    </script>
+</head>
+<body onload="loadXMLHttpRequest()">
+    <input type="button" value="Haal XML op" onclick="dataOphalen()" />
+<table id="spelersTabel" border="1">
+<thead><tr><th>id</th><th>naam</th></tr></thead>
+</table>
+</body>
+</html>

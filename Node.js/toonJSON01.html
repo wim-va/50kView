@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery, AJAX en JSON</title>
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+    <h1>Overzicht planten</h1>
+    <ul id="planten"></ul>
+    <script>
+    $(document).ready(function(){
+        $.ajax({
+            // zelfgeschreven service oproepen (cross domain)
+            url: "http://127.0.0.1:1337/planten.json",
+            contentType: "application/json",
+            crossDomain:true,
+            //method:"GET",
+            dataType:"json",   //parse returned JSON
+            success: function(json){
+                $.each( json.data, function(k,v){
+                    $("#planten").append("<li>"+v.PLANTENNAAM+"</li>")
+                });
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Status: " + textStatus); 
+                    alert("Error: " + errorThrown); 
+                
+            }
+        });
+    });
+</script>
+</body>
+
+</html>

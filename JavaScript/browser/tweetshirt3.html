@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <title>TweetShirt</title>
+    <meta charset="utf-8" />
+	<style>
+		canvas {
+			border: 1px solid black;
+		}
+	</style>
+	<script src="tweetshirt3.js"></script>
+</head>
+<body>
+    <canvas width="600" height="200" id="tshirtCanvas">
+		<p>You need canvas to use Tweetshirt!</p>
+		<p>This example requires a browser that supports the
+		<a href="http://www.w3.org/html/wg/html5/">HTML5</a> 
+		&lt;canvas&gt; feature.</p>
+	</canvas>
+	<form>
+	<p>
+		<label for="backgroundColor">Select background color:</label>
+		<input type="color" id="backgroundColor" value="#FFFFFF"> 
+<!-- 		<select id="backgroundColor"> -->
+<!-- 			<option value="white" selected="selected">White</option> -->
+<!-- 			<option value="black">Black</option> -->
+<!-- 		</select> -->
+	</p>
+	<p>
+		<label for="shape">Circles or squares?</label>
+		<select id="shape">
+			<option value="none" selected="selected">Neither</option>
+			<option value="circles">Circles</option>
+			<option value="squares">Squares</option>
+		</select>
+		<input type="color" id="shapesColor" value="#00ADEF">
+	</p>
+	<p>
+		<label for="foregroundColor">Select text color:</label>
+		<input type="color" id="foregroundColor" value="#000000">
+<!-- 		<select id="foregroundColor"> -->
+<!-- 			<option value="black" selected="selected">Black</option> -->
+<!-- 			<option value="white">White</option> -->
+<!-- 		</select> -->
+		<label for="textSize">Select text size:</label>
+		<input type="number" id="textSize" step="0.1" value="1.2" min="0.1">
+	</p>
+	<p>
+		<label for="tweets">Pick a tweet:</label>
+		<select id="tweets" >
+		</select>
+	</p>
+	<p>
+		<input type="button" id="previewButton" value="Preview">
+		<input type="button" id="saveButton" value="Save" title="Save last previewed shirt">
+		<input type="button" id="reloadButton" value="Reload" title="Reload saved shirt">
+	</p>
+</form>
+
+<!-- sorry, API van Twitter is veranderd en vereist authenticatie -->
+<!-- <script src="http://twitter.com/statuses/user_timeline/timoreilly.json?callback=updateTweets"> -->
+<script src="tweets.json">
+</script>
+
+</body>
+</html>
+
+
+
+

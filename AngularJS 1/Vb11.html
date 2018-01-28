@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+ <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+  <script type="text/javascript" src ="Vb11App.js"></script>
+  <script type="text/javascript" src ="Vb11Ctrl.js"></script>
+  <script type="text/javascript" src ="Vb11Services.js"></script>  
+<title>AngularJS: Voorbeeld 11 - Routes </title>
+</head>
+<body>
+<div ng-app="routesApp">
+        <div>
+            <ul >
+                <li><a href="#piraten"> Alle piratengegevens </a></li>
+                <li><a href="#piratennamen"> Piratennamen </a></li>
+            </ul>
+        </div>
+         <div ng-view></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" ?> 
+
+<!-- File Name: XML11.xml -->
+
+<!DOCTYPE boek
+	[
+	<!ELEMENT boek (titel, schrijver)>
+	<!ELEMENT titel (#PCDATA)>
+	<!ELEMENT schrijver (#PCDATA)>
+	]
+>
+
+<boek>
+<!-- volgorde van <schrijver> en <titel> niet in overeenstemming met DTD !-->
+	<schrijver>Jef De Konick</schrijver>
+	<titel>XML</titel>
+</boek>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Angular JS: oefening Hoger-Lager</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="Oef05Model.js"></script>
+    <script src="Oef05.js"></script>
+</head>
+
+<body>
+    <div ng-app="appOef05" ng-controller="hogerLagerCtrl">
+        <form name="frm" novalidate>
+            <label for="gok">Uw gok (1-100): </label><input type="number" min="1" max="100" name="gok" required ng-model="gok" placeholder="uw gok">
+            <span style="color:red; font-weight: bolder;" ng-show="frm.gok.$error.required">Dit veld is verplicht.</span>
+            <span style="color:red; font-weight: bolder;" ng-show="frm.gok.$error.number">Uw gok moet een getal zijn.</span>            
+            <!-- In browsers that follow the HTML5 specification, input[number] does not work as expected.
+             If a non-number is entered in the input, the browser will report the value as an empty string -->
+            <span style="color:red; font-weight: bolder;" ng-show="frm.gok.$error.min">Uw gok moet minstens 1 zijn.</span>
+            <span style="color:red; font-weight: bolder;" ng-show="frm.gok.$error.max">Uw gok moet strikt kleiner zijn dan 101.</span>
+            <input type="submit" value="gok" ng-disabled="frm.gok.$invalid || geraden()" ng-click="verwerkGok()"/>
+             <input type="submit" value="opnieuw" ng-click="reset()"/>
+            <p>{{ tip }}</p>
+            <p>Aantal beurten: {{ aantalBeurten() }}</p>
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" ?> 
+
+<!-- File Name: XML06.xml -->
+
+<inventaris>
+	<element>
+		<titel>Viool Concert in D</titel>
+		<componist>Beethoven</componist>
+		<prijs>15 €</prijs>
+	</element>
+	<element>
+		<titel>Clouseau</titel>
+		<componist>Wouters</componist>
+		<prijs>20.20 €</prijs>
+	</element>
+</inventaris>

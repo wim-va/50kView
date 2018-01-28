@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!DOCTYPE werknemers SYSTEM "oef2.dtd" >
+<werknemers>
+	<werknemer datumindienst="1/01/2004" loon="2200">
+		<naam>Jan</naam>
+	</werknemer>
+	<werknemer datumindienst="1/01/2005" loon="1750.75">
+		<naam>Piet</naam>
+	</werknemer>
+	<werknemer datumindienst="1/01/2003" loon="2525.25">
+		<naam>Joris</naam>
+	</werknemer>
+	<werknemer datumindienst="1/01/2000" loon="3025">
+		<naam>Jan</naam>
+	</werknemer>
+
+</werknemers>

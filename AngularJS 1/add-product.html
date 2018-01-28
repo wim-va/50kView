@@ -1,0 +1,27 @@
+	<div>
+		<h1>Edelsteen toevoegen</h1>
+		<form ng-submit="gemFrm.$valid && store.add()" class="form-inline" name="gemFrm" novalidate="novalidate">
+			<div class="form-group">
+				Naam: <input type="text" required="required" ng-model="store.gem.name"  class="form-control" name="naam"/>
+				<span class="ng-invalid" ng-show="gemFrm.naam.$error.required" style="color:red;">Naam moet ingevuld worden</span>
+			</div> 
+			<div class="form-group">
+				Prijs: <input type="number"	required="required" ng-model="store.gem.price" class="form-control" name="prijs"/>
+				<span class="ng-invalid" ng-show="gemFrm.prijs.$error.required" style="color:red;">Prijs moet ingevuld worden</span>
+				<span class="ng-invalid" ng-show="gemFrm.prijs.$error.number" style="color:red;">Prijs moet een getal zijn</span>
+			</div>
+			<div class="form-group">
+				Te koop: <input type="checkbox" ng-model="store.gem.canBuy" class="form-control"/>
+			</div>
+			<div class="form-group">
+				Uitverkocht: <input type="checkbox" ng-model="store.gem.soldOut" class="form-control"/>
+			</div>
+			<div class="form-group">
+				Schittering:<select ng-model="store.gem.shine"	ng-options="waarde for waarde in [1,2,3,4]" class="form-control" required="required" name="schittering">
+					<option	value="">-- kies schittering --</option>
+				</select>
+				<span class="ng-invalid" ng-show="gemFrm.schittering.$error.required" style="color:red;">Kies de schittering uit deze lijst</span>
+			</div>
+			<input	type="submit" value="Voeg toe" />
+		</form>
+	</div>

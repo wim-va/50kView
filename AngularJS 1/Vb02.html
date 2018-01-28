@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<title>AngularJS: voorbeeld 2</title>
+</head>
+<body>
+<div ng-app  ng-init="piraten=['Jan','Piet','Joris', 'Korneel']">
+Een lijstje met piraten:
+<ul>
+<li ng-repeat="piraat in piraten">
+{{ piraat }}
+</li>
+</ul>
+</div>
+</body>
+</html>

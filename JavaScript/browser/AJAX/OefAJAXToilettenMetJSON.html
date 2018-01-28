@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>oef AJAX - toiletten (JSON)</title>
+  </head>
+<body>
+<h1>Openbare toiletten in Antwerpen (JSON)</h1>
+<button onclick="showToilets()">Get the list</button>
+<div id="txtHint"></div>
+<table id = "theTable"></table>
+
+<script>
+function showToilets() {
+  var xhttp = new XMLHttpRequest();
+  document.getElementById("txtHint").innerHTML = "de gegevens worden opgehaald ...";
+  /**/ xhttp.responseType = 'json';
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("txtHint").innerHTML = "";
+        document.getElementById("theTable").innerHTML = "";
+        /**/var records = this.response.data;
+        for(var i=0; i < records.length; i++){
+            addRow(records[i]);
+        }
+    }
+  };
+  xhttp.open("GET", "http://datasets.antwerpen.be/v4/gis/openbaartoilet.json", true);
+  xhttp.send();   
+}
+
+
+function addRow(rec){
+ var table = document.getElementById('theTable');
+ var row = table.insertRow(0);
+ var cell1 = row.insertCell(0);
+ cell1.innerHTML = rec.omschrijving;
+ var cell2 = row.insertCell(1);
+ cell2.innerHTML = rec.straat + '&nbsp;' + rec.huisnummer;
+ var cell3 = row.insertCell(2);
+ cell3.innerHTML = rec.postcode + '&nbsp;' + rec.district;
+}
+</script>
+
+</body>
+</html>

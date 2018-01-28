@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>oefeningen XML</title>
+<script src="XMLUtil.js" ></script>
+<script>
+'use strict';
+function oefening01(){
+    var xmlDoc = loadXMLDoc("XML-bestanden/ploeg.xml");
+    var aantalSpelers = xmlDoc.getElementsByTagName("speler").length ;
+    alert("Er zijn " + aantalSpelers + " spelers.");
+}
+
+function oefening02(){
+    var xmlDoc = loadXMLDoc("XML-bestanden/oef2.xml");
+    var aantalWerknemers = xmlDoc.getElementsByTagName("werknemer").length ;
+    alert("Er zijn " + aantalWerknemers + " werknemers.");
+}
+
+function oefening03(){
+    var xmlDoc = loadXMLDoc("XML-bestanden/oef2.xml");
+    var werknemers = xmlDoc.getElementsByTagName("werknemer") ;
+    var totaal = 0;
+    for(var i=0; i < werknemers.length; i++){
+         totaal += parseFloat(werknemers[i].getAttribute("loon"));
+    }
+    alert("Het totale loon is " + totaal);
+}
+
+function oefening04(){
+    var xmlDoc = loadXMLDoc("XML-bestanden/oef4.xml");
+    var werknemers = xmlDoc.getElementsByTagName("werknemer") ;
+    var totaal = 0;
+    var loon;
+    for(var i=0; i < werknemers.length; i++){
+        loon = parseFloat(werknemers[i].getAttribute("loon"))
+        if(werknemers[i].getAttribute("valuta") == "BEF"){
+            loon /= 40.3399;
+        }
+        totaal += loon;
+    }
+    alert("Het totale loon is " + totaal);
+}
+
+function geefLoonV1(afdeling, filenaam){
+    var xmlDoc = loadXMLDoc(filenaam);
+    var afdelingen = xmlDoc.getElementsByTagName("afdeling") ;
+    var totaal = 0;
+    var werknemers;
+    for(var i=0; i < afdelingen.length; i++){
+        if(afdelingen[i].getAttribute("id") == afdeling){
+            werknemers = afdelingen[i].children;
+            for(var j=0; j<werknemers.length; j++){
+                if (werknemers[j].nodeName == "arbeider" ){
+                    totaal += parseFloat(werknemers[j].getAttribute("loon"));
+                }
+            }
+            break; 
+        }
+    }
+    alert("Het totale loon van de arbeiders van de afdeling " +
+                afdeling +" is " + totaal);
+}
+
+function geefLoon(afdeling, filenaam){
+    var xmlDoc = loadXMLDoc(filenaam);
+    var werknemers = xmlDoc.querySelectorAll("afdeling[id=" + afdeling + "] > arbeider");
+    var totaal = 0;
+    for(var i=0; i<werknemers.length; i++){
+            totaal += parseFloat(werknemers[i].getAttribute("loon"));
+    }
+    alert("Het totale loon van de arbeiders van de afdeling " +
+                afdeling +" is " + totaal);
+}
+
+function oefening05(){
+    geefLoon("marketing", "XML-bestanden/oef5.xml");
+}
+
+function geefGemiddeldLoon(afdeling, filenaam){
+// geef het gemiddeld loon van de arbeiders van de gegeven afdeling    
+    var xmlDoc = loadXMLDoc(filenaam);
+    var arbeiders = xmlDoc.querySelectorAll("afdeling[id="+afdeling+"] arbeider");
+    var totaal = 0;
+    for(var i=0; i<arbeiders.length; i++){
+            totaal += parseFloat(arbeiders[i].getAttribute("loon"));
+    }
+    if(arbeiders.length > 0){
+        alert("Het gemiddelde loon van de arbeiders van de afdeling " +
+                   afdeling +" is " + totaal/arbeiders.length);
+     }
+     else{
+         alert("Er werken geen arbeiders op de afdeling " + afdeling);
+     }
+}
+
+function oefening06(){
+    geefGemiddeldLoon("magazijn", "XML-bestanden/oef5.xml");
+}
+
+function geefGemiddeldArbeidersLoon(afdeling, filenaam){
+   var xmlDoc = loadXMLDoc(filenaam);
+   var arbeidersLonen = xmlDoc.querySelectorAll("afdeling[id="+afdeling+"] arbeider loon");
+   var totaal = 0;
+   for(var i=0; i<arbeidersLonen.length; i++){
+         totaal += parseFloat(arbeidersLonen[i].textContent);
+   }
+   if(arbeidersLonen.length > 0){
+        alert("Het gemiddelde loon van de arbeiders van de afdeling " +
+                    afdeling +" is " + totaal/arbeidersLonen.length);
+   }
+   else{
+        alert("Er werken geen arbeiders op de afdeling " + afdeling);
+   }
+}
+
+function oefening07(){
+    geefGemiddeldArbeidersLoon("magazijn", "XML-bestanden/oef7.xml");
+}
+
+function oefening08(){
+    var doc = document.implementation.createDocument("", "", null);
+    var htmlEl = doc.createElement("html");
+    doc.appendChild(htmlEl);
+    var headEl = doc.createElement("head");
+    htmlEl.appendChild(headEl);
+    var titleEl = doc.createElement("title");
+    titleEl.appendChild(doc.createTextNode("De titel"));
+    headEl.appendChild(titleEl);
+    var bodyEl = doc.createElement("body");
+    htmlEl.appendChild(bodyEl);
+    bodyEl.appendChild(doc.createTextNode("De link: "));
+    var aEl = doc.createElement("a");
+    aEl.setAttribute("href", "http://www.vdab.be")
+    aEl.appendChild(doc.createTextNode("De vdab"));
+    bodyEl.appendChild(aEl);
+
+    // ter controle:
+    toonNode(doc.documentElement);
+
+    return doc;
+}
+
+function toonNode(node){
+    var serializer = new XMLSerializer();
+    var str = serializer.serializeToString(node);
+    alert(str);
+}
+
+function oefening09(){
+    var doc = oefening08();
+    var pEl = doc.createElement("p");
+    pEl.appendChild(doc.createTextNode("De eerste paragraaf"));
+    var bodyEl = doc.documentElement.lastChild;
+    bodyEl.appendChild(pEl);
+    // ter controle:
+    toonNode(doc.documentElement);
+}
+
+function oefening10(){
+    var doc = loadXMLDoc("XML-bestanden/itemspuur.xml");
+    var prijzen = doc.querySelectorAll("prijs");
+    for(var i=0; i< prijzen.length; i++){
+        prijzen[i].textContent = 1.05 * prijzen[i].textContent;
+    }
+    toonNode(doc);
+}
+
+function oefening11(){
+    var xml = loadXMLText("XML-bestanden/oef11.html");
+    var parser = new DOMParser();
+    var xmlDoc = parser.parseFromString(xml, "application/xhtml+xml");
+    var urlNodes = xmlDoc.getElementsByTagName("a") ;
+    var urls = [];
+    var url;
+    for(var i=0; i < urlNodes.length; i++){
+        url = urlNodes[i].getAttribute("href");
+        if(urls.indexOf(url) == -1){
+            urls.push(url);
+        }
+    }
+    alert("Volgende urls staan in het document: "+ urls);
+}
+</script>
+</head>
+<body>
+    <form>
+        <input type="button" value="oef 1" onclick="oefening01()"/>
+        <input type="button" value="oef 2" onclick="oefening02()"/>
+        <input type="button" value="oef 3" onclick="oefening03()"/>
+        <input type="button" value="oef 4" onclick="oefening04()"/>
+        <input type="button" value="oef 5" onclick="oefening05()"/>        
+        <input type="button" value="oef 6" onclick="oefening06()"/>        
+        <input type="button" value="oef 7" onclick="oefening07()"/>           
+        <input type="button" value="oef 8" onclick="oefening08()"/>        
+        <input type="button" value="oef 9" onclick="oefening09()"/>        
+        <input type="button" value="oef 10" onclick="oefening10()"/>  
+        <input type="button" value="oef 11" onclick="oefening11()"/>               
+    </form>
+</body>
+</html>

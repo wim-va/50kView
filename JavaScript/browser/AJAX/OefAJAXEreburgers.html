@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        h1 {
+            border-bottom: 3px solid orangered;
+            color: orangered;
+            font-size: 30px;
+        }
+        
+        h1 {
+            display: table;
+        }
+        
+        table,
+        th,
+        td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        
+        table tr:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+        
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+        
+        fieldset {
+            margin: 20px;
+            display: inline-block;
+        }
+        
+        label {
+            margin-right: 5px;
+            margin-left: 20px;
+        }
+        
+        div {
+            margin: 20px;
+        }
+    </style>
+    <title>oef AJAX - ereburgers</title>
+</head>
+
+<body>
+    <h1>Ereburgers van Brussel</h1>
+    <fieldset>
+        <legend>Zoekcriteria</legend>
+        <label for="q">Zoekterm: </label>
+        <input id="q" placeholder="zoekcriterium" />
+        <label for="rows">Max. aantal rijen per pagina: </label>
+        <input type="number" id="rows" min="1" value="10" />
+        <button type="button" onclick="zoek(q.value, parseInt(rows.value))">Zoek</button>
+        <!-- type="button" => no submit -->
+    </fieldset>
+    <div id="id01"></div>
+    <div id="id02"></div>
+    <script>
+        var aantalRecords = 0;
+        var xmlhttp = new XMLHttpRequest();
+        var url = "http://opendata.brussel.be/api/records/1.0/search/?dataset=ereburgers1";
+        zoek(null, parseInt(rows.value), 0);
+
+        function zoek(q, aantalRijen, start) {
+            document.getElementById("id01").innerHTML = "Gegevens worden opgevraagd";
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    verwerkRecords(this.responseText, aantalRijen, q);
+                }
+            }
+            xmlhttp.open("GET", url + (q ? "&q=" + q : "") + (aantalRijen ? "&rows=" + aantalRijen : "") + (start ? "&start=" + start : ""), true);
+            xmlhttp.send();
+        }
+
+        function verwerkRecords(response, aantalRijen, q) {
+            var jsonObj = JSON.parse(response);
+            var arr = jsonObj.records;
+            var i;
+            var out = "<table><tr><th>naam</th><th>functie</th><th>datum</th></tr>";
+            for (i = 0; i < arr.length; i++) {
+                out += "<tr><td>" + arr[i].fields.nom + "</td><td>" + arr[i].fields.functie + "</td><td>" + new Date(arr[i].fields.date).toLocaleDateString() + "</td></tr>";
+            }
+            out += "</table>";
+            aantalRecords = jsonObj.nhits;
+            document.getElementById("id01").innerHTML = out;
+            document.getElementById("id02").innerHTML = maakPaginanrs(q, aantalRijen);
+        }
+
+        function maakPaginanrs(q, aantalRijen) {
+            var out = "";
+            var pagina = 0;
+            var recordNr = 0;
+            var start = 0;
+            while (recordNr < aantalRecords) {
+                recordNr += aantalRijen;
+                pagina++;
+                out += "&nbsp;<a href='' onclick='event.preventDefault();zoek(" + (q ? "\"" + q + "\"" : null) + "," + aantalRijen + "," + start + ")'>" + pagina + "</a>&nbsp;";
+                start += aantalRijen;
+            }
+            return out;
+        }
+    </script>
+</body>
+
+</html>

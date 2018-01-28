@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM manipulatie: voorbeeld 4</title>
+<script>
+window.onload = function(){
+    document.getElementById("btnVoegToe").onclick = voegRijToe;
+}
+
+function voegRijToe(){
+    var tabel = document.getElementById("tabel");
+    var rij = tabel.insertRow(-1);  // achteraan rij toevoegen
+    var cel = rij.insertCell(0);
+    cel.innerText = "Knutsel";
+    var cel2 = rij.insertCell(1);
+    cel2.innerText = "smurf";
+}
+</script>
+</head>
+<body>
+    <table id="tabel">
+        <tr><th>Naam</th><th>Voornaam</th></tr>
+        <tr><td>De Grote</td><td>Smurf</td></tr>
+        <tr><td>De Lieftallige</td><td>Smurfin</td></tr>
+    </table>
+    <input type="button" id="btnVoegToe" value="voeg toe" />
+</body>
+</html>

@@ -1,0 +1,38 @@
+<title>Een kwis</title>
+<script type="text/javascript">
+<!--
+'use strict';
+   function controleer(){
+     var aantalJuist=0;
+     if (frmKwis.antwoord1[0].checked) aantalJuist++;
+     if (frmKwis.antwoord2[2].checked) aantalJuist++;
+     if (frmKwis.antwoord3[1].checked) aantalJuist++;
+     window.alert("Aantal juist: "+ aantalJuist);
+   }
+//-->
+</script>
+
+</head>
+<body>
+<h1>De grote webmaster kwis</h1>
+<form name="frmKwis">
+Welke tag gebruik je om een paragraaf af te bakenen?<br />
+<input type="radio" name="antwoord1" value="p"/>p<br />
+<input type="radio" name="antwoord1" value="h1"/>h1<br />
+<input type="radio" name="antwoord1" value="a"/>a<br />
+<input type="radio" name="antwoord1" value="v"/>v<br />
+Welke tag gebruik je om een anchor af te bakenen?<br />
+<input type="radio" name="antwoord2" value="p"/>p<br />
+<input type="radio" name="antwoord2" value="h1"/>h1<br />
+<input type="radio" name="antwoord2" value="a"/>a<br />
+<input type="radio" name="antwoord2" value="v"/>v<br />
+Welke tag gebruik je om een heading af te bakenen?<br />
+<input type="radio" name="antwoord3" value="p"/>p<br />
+<input type="radio" name="antwoord3" value="h1"/>h1<br />
+<input type="radio" name="antwoord3" value="a"/>a<br />
+<input type="radio" name="antwoord3" value="v"/>v<br />
+<input type="button" value="controleer" onclick="controleer()">
+
+</form>
+</body>
+</html>

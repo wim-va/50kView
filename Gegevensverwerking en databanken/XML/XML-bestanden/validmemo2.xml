@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- validmemo2.xml -->
+<!-- Dit is commentaar -->
+<!DOCTYPE memos SYSTEM "validmemo2.dtd">
+<memos>
+   <memo id="C1" xml:lang="nl-BE">
+      <voor>
+         Carlos
+         <!--testje -->
+      </voor>
+      <van>Jef</van>
+      <datum zone="EST">
+         <dag>9</dag>
+         <maand>5</maand>
+         <jaar>2001</jaar>
+      </datum>
+      <titel>XML</titel>
+      <tekst>Carlos, ik begin vandaag met de cursus XML</tekst>
+   </memo>
+   <memo id="C2" xml:lang="nl-BE">
+      <voor>Jef</voor>
+      <van>Carlos</van>
+      <datum zone="EST">
+         <dag>9</dag>
+         <maand>5</maand>
+         <jaar>2001</jaar>
+      </datum>
+      <antwoord idref="C1"/>
+      <titel>Re:XML</titel>
+      <tekst>Dat is heel goed. Ik verhoog meteen je loon.</tekst>
+   </memo>
+</memos>

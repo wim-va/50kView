@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quiz</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="xmlUtil.js"></script>
+    <script src="oefQuizjQ.js"></script>
+    <link rel="stylesheet" href="oefQuiz.css" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>De grote Mendeljev quiz</h1>
+        <form>
+            <div>
+            <label for="txtNaam">Naam: </label><input type="text" id="txtNaam" disabled />
+            </div>
+            <div>
+            <label for="txtSymbool">Symbool: </label><input type="text" id="txtSymbool" />
+            </div>
+            <div>
+            <input type="button" id="btnOK" value="OK" />
+            <input type="button" id="btnStart" value="Start" />
+            </div>
+        </form>
+        <div id="divFeedback"></div>
+        <div id="divScore"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" ?> 
+
+<!-- File Name: XML10.xml -->
+
+<!DOCTYPE boek
+	[
+	<!ELEMENT boek (titel, schrijver)>
+	<!ELEMENT titel (#PCDATA)>
+	<!ELEMENT schrijver (#PCDATA)>
+	]
+>
+
+<boek>
+	<titel>XML</titel>
+	<schrijver>Jef De Konick</schrijver>
+</boek>

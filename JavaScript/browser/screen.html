@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Screen</title>
+<script>
+function detectScreen(){
+  var availHeight= screen.availHeight; //zonder taskbar
+  var availWidth= screen.availWidth; // zonder taskbar
+  var height = screen.height; //schermhoogte
+  var width = screen.width; // schermbreedte
+  var colorDepth= screen.colorDepth;
+  var deviceXDPI= screen.deviceXDPI; // niet in Firefox, Opera
+  var deviceYDPI= screen.deviceYDPI; // niet in Firefox, Opera
+  var tekst = "De hoogte van het scherm is "+height+"(beschikbare hoogte: "+availHeight+")\n";
+  tekst = tekst + "De breedte van het scherm is "+width+"(beschikbare breedte: "+availWidth+")\n";
+  tekst = tekst + "Het aantal bits om het kleurenpalet weer te geven is "+ colorDepth+"\n";
+  tekst = tekst + "Dots per inch ("+deviceXDPI+","+deviceYDPI+")\n";
+  alert(tekst);
+}
+</script>
+</head>
+<body onload="detectScreen();">
+</body>
+</html>

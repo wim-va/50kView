@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Conversie XML DOM <-> String</title>
+<script>
+'use strict';
+var doc;
+
+function DOMToString(){
+    if (doc){
+        var serializer = new XMLSerializer();
+        var str = serializer.serializeToString(doc.documentElement.firstChild);
+        alert(str);
+    }
+}
+
+function stringToDOM(){
+    var xmlString = "<smurfen>" +
+        "<smurf><naam>Grote Smurf</naam><omschrijving>leider van de smurfen</omschrijving><kenmerk>draagt als enige een rode broek en een rode muts</kenmerk></smurf>"+
+        "<smurf><naam>Smurfin</naam><omschrijving>vrouwelijke smurf</omschrijving><kenmerk>blond haar, wit jurkje</kenmerk></smurf>"+
+        "</smurfen>";
+    var domParser = new DOMParser();
+    /*  Volgens de documentatie van MDN (https://developer.mozilla.org/en-US/docs/Web/API/DOMParser)
+        is DOMParser "experimental", maar de huidige browsers ondersteunen DOMParser wel  */
+    doc = domParser.parseFromString(xmlString, "application/xml");
+    var output = doc.documentElement.children.length + " " + doc.documentElement.nodeName + " geladen:";
+    for(var i=0; i < doc.documentElement.children.length; i++){
+        output += "\n" + doc.documentElement.children[i].firstChild.textContent;
+    }
+    alert(output);
+}
+
+stringToDOM();
+DOMToString();
+
+
+</script>
+</head>
+<body>
+</body>
+</html>

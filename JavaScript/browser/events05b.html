@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Events 5b</title>
+<script>
+const KLEUR1 = "blue", KLEUR2 = "yellow";
+
+setTimeout(wakkerWorden, 5000);
+
+function wakkerWorden(){
+	alert('Wakker worden!!!');
+	setInterval(switchBackgroundColorBody, 1000);
+}
+
+function switchBackgroundColorBody(){
+	var currentColor = document.body.style.backgroundColor;
+	document.body.style.backgroundColor = currentColor == KLEUR1 ? KLEUR2 : KLEUR1;
+}
+</script>
+</head>
+<body>
+Na 5 seconden waarschuwt deze pagina je.
+</body>
+</html>

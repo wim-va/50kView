@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX: XMLHttpRequest ophalen</title>
+    <script>
+        function loadXMLHttpRequest() {
+            var xmlHttp = false;
+            try {  // Firefox/Opera/Safari/IE7+
+                xmlHttp = new XMLHttpRequest();
+                alert("XMLHttpRequest created");
+            }
+            catch (e) {
+                try { // IE5
+                    xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                    alert("XMLHttpRequest created");
+                }
+                catch (e) {
+                    try { // IE6
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                        alert("XMLHttpRequest created");
+                    }
+                    catch (e) {
+                        alert("Deze browser ondersteunt geen AJAX");
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="loadXMLHttpRequest()"> 
+</body>
+</html>

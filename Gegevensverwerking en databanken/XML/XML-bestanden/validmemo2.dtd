@@ -1,0 +1,15 @@
+   <!ELEMENT memos (memo)*>
+   <!ELEMENT memo (voor, van, datum, antwoord?, titel, tekst)>
+   <!ATTLIST memo id ID #REQUIRED>
+   <!ATTLIST memo xml:lang NMTOKEN #IMPLIED>
+   <!ELEMENT voor (#PCDATA)>
+   <!ELEMENT van (#PCDATA)>
+   <!ELEMENT datum (dag, maand, jaar)>
+   <!ATTLIST datum zone CDATA #REQUIRED>
+   <!ELEMENT dag (#PCDATA)>
+   <!ELEMENT maand (#PCDATA)>
+   <!ELEMENT jaar (#PCDATA)>
+   <!ELEMENT antwoord EMPTY>
+   <!ATTLIST antwoord idref IDREF #REQUIRED>
+   <!ELEMENT titel (#PCDATA)>
+   <!ELEMENT tekst (#PCDATA)>

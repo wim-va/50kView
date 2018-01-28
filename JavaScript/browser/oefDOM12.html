@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Oefening DOM 12</title>
+<script>
+function testje(){
+   var waarde;
+   for (var i = 0;i<frmText.keuze.length;i++){
+      if (frmText.keuze[i].checked){
+         waarde=i;
+         break;  // uit lus
+      }
+   }
+   frmText.selectie.selectedIndex= waarde;
+}
+function init(){
+  document.getElementById("btn").onclick = testje;
+}
+window.onload = init;
+</script>
+</head>
+<body>
+<form name="frmText">
+  <input type="radio" name="keuze" value="1"/>1<br />
+  <input type="radio" name="keuze" value="2"/>2<br />
+  <select name="selectie">
+     <option value="1">1</option>
+     <option value="2">2</option>
+  </select>
+  <input type="button" value="test" id="btn" />
+</form>
+</body>
+</html>

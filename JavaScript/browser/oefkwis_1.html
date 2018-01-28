@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Een kwis</title>
+<script type="text/javascript">
+<!--
+'use strict';
+   function controleer(){
+     if (frmKwis.antwoord[0].checked)
+        window.alert("schitterend");
+     else window.alert("volledig verkeerd");
+     }
+// -->
+</script>
+
+</head>
+<body>
+<h1>De grote webmaster kwis</h1>
+<form name="frmKwis">
+Welke tag gebruik je om een paragraaf af te bakenen ?<br />
+<input type="radio" name="antwoord" value="p"/>p<br />
+<input type="radio" name="antwoord" value="h1"/>h1<br />
+<input type="radio" name="antwoord" value="a"/>a<br />
+<input type="radio" name="antwoord" value="v"/>v<br />
+<input type="button" value="controleer" onclick="controleer()">
+
+</form>
+</body>
+</html>

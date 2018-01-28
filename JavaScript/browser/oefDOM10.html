@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Oefening DOM 10</title>
+<script>
+function bewerk(){
+  if (frmTekst.bewerking[0].checked) {telOp();}
+  else{ 
+    if (frmTekst.bewerking[1].checked) {berekenVerschil();}
+    else{ 
+        if (frmTekst.bewerking[2].checked) {vermenigvuldig();}
+        else{ 
+        if (frmTekst.bewerking[3].checked) {deel();}
+        } 
+    }
+  }
+}
+function telOp(){
+  frmTekst.txtResultaat.value = parseInt(frmTekst.txtGetal1.value) +
+                                parseInt(frmTekst.txtGetal2.value)
+}
+function berekenVerschil(){
+  frmTekst.txtResultaat.value = parseInt(frmTekst.txtGetal1.value) -
+                                parseInt(frmTekst.txtGetal2.value)
+}
+function deel(){
+  frmTekst.txtResultaat.value = parseInt(frmTekst.txtGetal1.value) /
+                                parseInt(frmTekst.txtGetal2.value)
+}
+function vermenigvuldig(){
+  frmTekst.txtResultaat.value = parseInt(frmTekst.txtGetal1.value) *
+                                parseInt(frmTekst.txtGetal2.value)
+}
+function init(){
+  document.getElementById("btn").onclick = bewerk;
+}
+window.onload = init;
+</script>
+</head>
+<body>
+<form name="frmTekst">
+<input type="number" name="txtGetal1" /><br />
+<input type="radio" name="bewerking" /> + <br />
+<input type="radio" name="bewerking" /> - <br />
+<input type="radio" name="bewerking" /> x <br />
+<input type="radio" name="bewerking" /> / <br />
+<input type="number"" name="txtGetal2" /><br />
+<input type="button" value=" = " id="btn" /><br />
+<input type="number" name="txtResultaat"  readonly/><br />
+</form>
+</body>
+</html>

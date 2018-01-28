@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo"><h2>Let AJAX change this text</h2></div>
+
+<button type="button" onclick="loadDoc()">Change Content</button>
+
+<script>
+
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      document.getElementById("demo").firstChild.innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open("GET", "//127.0.0.1:1337/");
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
+

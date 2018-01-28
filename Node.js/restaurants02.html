@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>oefening NodeJS - MongoDB (2)</title>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <div id="melding"></div>
+    <form>
+        <label for="selCuisine">Keukens:</label><select id="selCuisine"></select>
+    </form>
+</body>
+<script >
+    $(document).ready( function(){
+      $('#melding').html("Even geduld aub. De restaurantgegevens worden opgehaald...");
+      $.getJSON("http://localhost:8888/restaurants/keukens", function(docs){
+          $('#melding').html("");
+          $.each(docs, (i, keuken) => {
+              $('#selCuisine').append("<option>"+keuken+"</option>");
+          });
+      });
+    });
+</script>
+</html>

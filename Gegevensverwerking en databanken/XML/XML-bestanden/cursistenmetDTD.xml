@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- cursisten2.xml -->
+<!DOCTYPE cursisten [
+  <!ELEMENT cursisten (cursist)+>
+  <!ELEMENT cursist (naam, pc)>
+  <!ELEMENT naam (#PCDATA)>
+  <!ELEMENT pc (#PCDATA)>
+]>
+<cursisten>
+  <cursist>
+     <naam>Joske</naam>
+     <pc>PC01</pc>
+  </cursist>
+  <cursist>
+     <naam>Lowieke</naam>
+     <pc>PC01</pc>
+  </cursist>
+</cursisten>

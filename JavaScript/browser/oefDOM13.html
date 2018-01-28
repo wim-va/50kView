@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Oefening DOM 13</title>
+<script>
+function naarRechts(){
+	var optieIndex = frm.namenLinks.selectedIndex;
+	var optie = frm.namenLinks.options[optieIndex];
+//	frm.namenLinks.remove(optieIndex); // overbodig>
+	frm.namenRechts.options[frm.namenRechts.options.length]=optie;
+}
+function naarLinks(){
+	var optieIndex = frm.namenRechts.selectedIndex;
+	var optie = frm.namenRechts.options[optieIndex];
+//	frm.namenRechts.remove(optieIndex);  // overbodig>
+	frm.namenLinks.options[frm.namenLinks.options.length]=optie;
+}
+function voegToe(){
+	var naam = frm.naamVeld.value;
+	var optie = document.createElement('option');
+	optie.text = naam;
+	frm.namenLinks.options[frm.namenLinks.options.length]=optie;
+	frm.naamVeld.value="";
+	frm.naamVeld.focus();
+}
+function init(){
+	document.getElementById("btnVoegToe").onclick = voegToe;
+  	document.getElementById("btnNaarLinks").onclick = naarLinks;
+  	document.getElementById("btnNaarRechts").onclick = naarRechts;
+}
+window.onload = init;
+</script>
+</head>
+<body>
+<form name="frm">
+Naam: <input type="text" name="naamVeld" /><input type="button" value="Toevoegen" id="btnVoegToe" /><br />
+<select name="namenLinks" size="5" style="width:100px">
+<option>Jan</option>
+<option>Piet</option>
+</select>
+<input type="button" style="width:25px" value=">" id="btnNaarRechts" />
+<input type="button" style="width:25px" value="<" id="btnNaarLinks" />
+<select name="namenRechts" size="5" style="width:100px">
+<option>Joris</option>
+<option>Corneel</option>
+</select>
+</form>
+</body>
+</html>

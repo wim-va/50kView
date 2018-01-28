@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM manipulatie: oefening 3</title>
+<script>
+var lijstje = ["brood", "kaas", "boter", "ham"];
+var melkproducten = ["melk", "boter", "kaas", "yoghurt"];
+
+window.onload = function(){
+    maakHoofding();
+    maakLijst();
+    maakKnop();
+    maakAankruisvak();
+    document.getElementById("btnVoegToe").onclick = voegItemToe;
+}
+
+function maakHoofding(){
+    var h2 = document.createElement("h2");
+    h2.innerText = "Boodschappenlijstje";
+    document.body.appendChild(h2);
+}
+
+function maakLijst(){
+    var ul = document.createElement("ul");
+    document.body.appendChild(ul);
+    ul.id = "lijst"
+    var li;
+    for(var i=0; i<lijstje.length; i++){
+        li = document.createElement("li");
+        li.innerText = lijstje[i];
+        ul.appendChild(li);
+    }
+}
+
+function maakKnop(){
+    var btn = document.createElement("input");
+    btn.type = "button";
+    btn.value = "bestellen";
+    btn.id = "btnBestellen";
+    btn.onclick = function(){
+        if(document.getElementById("chbMelkallergie").checked){
+            alert("omwille van uw allergie verwijderen we de melkproducten en moet u daarna opnieuw bestellen");
+            verwijderMelkproducten();
+        }
+        else{
+            alert("uw bestelling wordt verwerkt");
+            maakLijstLeeg();
+        }
+    }
+    document.body.appendChild(btn);
+}
+
+function voegItemToe(){
+    var li = document.createElement("li");
+    li.innerText = document.getElementById("invoer").value;
+    var ul = document.getElementById("lijst");
+    ul.appendChild(li);
+}
+
+function maakLijstLeeg(){
+     var ul = document.getElementById("lijst");
+     while(ul.firstChild){
+         ul.removeChild(ul.firstChild);
+     }
+}
+
+function maakAankruisvak(){
+    var chb = document.createElement("input");
+    chb.type = "checkbox";
+    chb.id = "chbMelkallergie";
+    var lbl = document.createElement("label");
+    lbl.innerText = "melkallergie";
+    lbl.htmlFor = "chbMelkallergie";    
+    var btn = document.getElementById("btnBestellen");
+    document.body.insertBefore(lbl, btn);
+    document.body.insertBefore(chb, btn);
+}
+
+function verwijderMelkproducten(){
+     var ul = document.getElementById("lijst");
+     var li;
+     for(var i= ul.children.length-1; i>= 0; i--){
+         li = ul.children[i];
+         if(melkproducten.indexOf(li.innerText) > -1){
+             ul.removeChild(li);
+         }
+     }
+}
+</script>
+</head>
+<body>
+    <h1>Onderstaande elementen zijn dynamisch toegevoegd</h1>
+    <input type="text" id="invoer" />
+    <input type="button"  id="btnVoegToe"  value="Toevoegen"/>
+</body>
+</html>

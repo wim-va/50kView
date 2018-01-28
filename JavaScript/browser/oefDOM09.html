@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Oefening DOM 9</title>
+<script>
+function beweegSchildpad(pos){
+   var kans = Math.floor(Math.random()*10)+1;
+   if (kans <= 5){
+      pos += 3;
+   }else if (kans<=7){
+      pos -= 6;
+      if (pos < 0){
+          pos=0;
+      } 
+   }else{
+      pos++;
+   }
+   return pos;
+}
+function beweegHaas(pos){
+   var kans = Math.floor(Math.random()*10)+1;
+   if (kans <= 2){
+      pos += 9;
+   }else if (kans <= 3){
+      pos -= 12;
+   }else if (kans <= 6){
+       pos++;
+   }else if (kans <= 8){
+      pos -= 2;
+   }
+   if (pos < 0){
+       pos =0;
+   }
+   return pos;
+}
+function startWedstrijd(){
+   var parcours = new Array(70);
+   /*for (var i = 0;i<70;i++){
+     parcours[i]=" ";
+   }*/
+   // korter:
+   parcours.fill(" ");
+   document.write("<pre>");
+   var haasPos=0;
+   var schildpadPos=0;
+   while ((schildpadPos < 70) && (haasPos < 70)){
+      for (var i=0;i<70;i++){
+          document.write(parcours[i]);
+      }
+      document.write("\n");
+      parcours[haasPos]= " ";
+      parcours[schildpadPos] = " " ;
+      haasPos = beweegHaas(haasPos);
+      schildpadPos = beweegSchildpad(schildpadPos);
+      if (schildpadPos != haasPos){
+         parcours[haasPos]= "H";
+         parcours[schildpadPos] = "S";
+      }else{
+         parcours[haasPos]="Ai";
+      }
+   }
+   document.write("</pre>");
+   if (schildpadPos>69){
+      document.write("Schildpad is gewonnen");
+   }else{
+      document.write("Haas is gewonnen");
+   }
+}
+window.onload = startWedstrijd;
+</script>
+</head>
+<body>
+</body>
+</html>

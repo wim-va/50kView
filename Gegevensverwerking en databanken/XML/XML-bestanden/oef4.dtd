@@ -1,0 +1,7 @@
+﻿<!ELEMENT werknemers (werknemer)* >
+<!ELEMENT werknemer (naam) >
+<!ATTLIST werknemer 
+	datumindienst CDATA #REQUIRED 
+	loon CDATA #REQUIRED 
+  valuta (EUR|BEF) "EUR">
+<!ELEMENT naam (#PCDATA) >

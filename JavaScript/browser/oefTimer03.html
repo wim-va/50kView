@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>oefening timers (3)</title>
+<style type="text/css">
+    div{
+        background-color: blue;
+        width: 10px;
+        height: 30px;
+    }
+</style>
+<script>
+'use strict';
+var interval;
+
+window.onload = init;
+
+function init(){
+    document.getElementById("btnStart").onclick = move;
+}
+
+function move(){
+    var elem = document.getElementById("bar"); 
+    elem.style.width = "0%";
+    interval = setInterval(frame, 100, elem);
+}
+
+function frame(elem) {
+    var width = parseInt(elem.style.width.substring(0, elem.style.width.length-1));
+    if (width == 100) {
+      clearInterval(interval);
+    } else {
+        width++;
+        elem.style.width = width + '%'; 
+    }
+  }
+</script>
+</head>
+<body>
+    <div id="bar" style="width:0%"></div>
+    <input type="button" value="start"  id="btnStart"/>
+</body>
+</html>

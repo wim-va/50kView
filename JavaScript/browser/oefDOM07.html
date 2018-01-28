@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Oefening DOM 7</title>
+<script>
+function sorteer(){
+   var teksten= [ frmTekst.txtNaam1, frmTekst.txtNaam2, 
+               frmTekst.txtNaam3, frmTekst.txtNaam4, frmTekst.txtNaam5];
+   var namen = new Array(teksten.length);
+   for (var i=0;i<teksten.length;i++){
+     namen[i] = teksten[i].value;
+   }
+   namen.sort();
+   for (var i=0;i<teksten.length;i++){
+     teksten[i].value= namen[i];
+   }
+}
+function init(){
+  document.getElementById("btn").onclick = sorteer;
+}
+window.onload = init;
+</script>
+</head>
+<body>
+<form name="frmTekst">
+<input type="text" name="txtNaam1" /><br />
+<input type="text" name="txtNaam2" /><br />
+<input type="text" name="txtNaam3" /><br />
+<input type="text" name="txtNaam4" /><br />
+<input type="text" name="txtNaam5" /><br />
+<input type="button" value="Sorteer" id="btn" /><br />
+</form>
+
+</body>
+</html>

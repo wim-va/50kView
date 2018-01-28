@@ -1,0 +1,7 @@
+<!ELEMENT werknemers (afdeling)* >
+<!ELEMENT afdeling (arbeider*, bediende*) >
+<!ATTLIST afdeling id CDATA #REQUIRED >
+<!ELEMENT arbeider (naam, loon) >
+<!ELEMENT bediende (naam, loon) >
+<!ELEMENT naam (#PCDATA) >
+<!ELEMENT loon (#PCDATA) >

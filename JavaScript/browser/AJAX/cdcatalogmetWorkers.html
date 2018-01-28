@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script>
+    // async versie met workers
+        'use strict';
+        var xml = null, xsl = null, noOfResponses = 0;
+
+        function displayResult(responseType){
+            try{
+            //if (window.ActiveXObject || xhttp.responseType == "msxml-document") {
+                if (window.ActiveXObject || responseType == "msxml-document") {
+                    // IE
+                    var xmldoc = new ActiveXObject("Msxml2.DOMDocument.3.0");
+                    xmldoc.async = false;
+                    xmldoc.loadXML(xml);
+                    var xsldoc = new ActiveXObject("Msxml2.FreeThreadedDOMDocument.3.0");
+                    xsldoc.async = false;
+                    xsldoc.loadXML(xsl);
+                    var ex = xmldoc.transformNode(xsldoc);
+                    document.getElementById("example").innerHTML = ex;
+                }
+                // code for Chrome, Firefox, Opera, etc.
+                else if (document.implementation && document.implementation.createDocument) {
+                    var parser = new DOMParser();
+                    var xsltProcessor = new XSLTProcessor();
+                    xsltProcessor.importStylesheet(parser.parseFromString(xsl,"text/xml"));
+                    var resultDocument = xsltProcessor.transformToFragment(parser.parseFromString(xml,"text/xml"), document);
+                    document.getElementById("example").appendChild(resultDocument);
+                }
+            }catch(ex){
+                document.getElementById("example").innerHTML = "Oeps...  " + ex;
+            }
+        }
+
+        function init(){
+            if (Worker == "undefined") {
+	        	document.getElementById("example").innerHTML = "Bummer, no Web Workers";
+	        }
+            else{
+                var workerXML = new Worker("loadXMLWorker.js");
+                workerXML.postMessage("cdcatalog.xml");
+		        workerXML.onmessage = function(event) {
+                    xml = event.data.responseXML;
+                    noOfResponses++;
+                    if (noOfResponses == 2){
+                        displayResult(event.data.responseType);
+                    }
+		        }
+                var workerXSL = new Worker("loadXMLWorker.js");
+                workerXSL.postMessage("cdcatalog.xsl");
+		        workerXSL.onmessage = function(event) {
+                    xsl = event.data.responseXML;
+                    noOfResponses++;
+                    if (noOfResponses == 2){
+                        displayResult(event.data.responseType);
+                    }
+		        }
+            }
+        }
+    </script>
+    </head>
+    <body onload= "init()" >
+        <div id="example" > </div>
+    </body>
+</html>

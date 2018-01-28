@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<betalingen rekeningnummer="000-0000001-01">
+  <betaling id="bet01">
+    <naar>000-0000002-02</naar>
+    <bedrag>12.75</bedrag>
+    <mededeling>jaarlijks lidgeld voor de fanclub van K3</mededeling>
+  </betaling>
+  <betaling id="bet02">
+    <naar>002-0000001-56</naar>
+    <bedrag>125.99</bedrag>
+    <mededeling></mededeling>
+  </betaling>
+</betalingen>

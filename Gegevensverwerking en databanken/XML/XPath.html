@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>gegevens in XML zoeken met XPath</title>
+<script src="XMLUtil.js" ></script>
+<script>
+'use strict';
+const XMLFILE="XML-bestanden/itemspuur.xml";
+
+window.onload = function(){
+    document.getElementById("btnZoek").onclick = function(){
+        var doc = loadXMLDoc(XMLFILE);
+        var xPathExpr = document.getElementById("txtXPath").value;
+        var result = document.evaluate(xPathExpr, doc, null, XPathResult.ANY_TYPE, null);
+        document.getElementById("result").innerHTML = "";
+        switch(result.resultType){
+                case XPathResult.UNORDERED_NODE_ITERATOR_TYPE:
+                    var thisNode = result.iterateNext();
+                    while (thisNode) {
+                        document.getElementById("result").innerHTML +=  thisNode.textContent + "<br />";
+                        thisNode = result.iterateNext();
+                    }	
+                    break;
+                case XPathResult.NUMBER_TYPE:
+                    document.getElementById("result").innerHTML = result.numberValue;
+                    break;
+      }
+    }
+}
+</script>
+</head>
+<body>
+    <form>
+        <label for="txtXPath">XPath expressie: </label><input type="text" id="txtXPath" size="75"/>
+        <input type="button" id="btnZoek" value="Zoek"/>
+    </form>
+    <div id="result">
+    </div>
+</body>
+</html>

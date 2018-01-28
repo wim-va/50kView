@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Events 4</title>
+<style>
+div {
+width:500px;
+height:100px;
+ background-color: #CFCFCF;
+}
+</style>
+
+<script>
+window.onload = function(){
+	var area = document.getElementById("area");
+	area.onmousemove = function(e){
+		var bericht = document.getElementById("bericht");
+		var x = e.pageX;
+		var y = e.pageY;
+		bericht.innerHTML = "huidige muispositie: " + x + ", " + y;
+	}
+	area.onmouseenter = function(){
+		area.style.backgroundColor = "red";
+	}
+	area.onmouseout = function(){
+		area.style.backgroundColor = "#CFCFCF";
+	}
+}
+</script>
+</head>
+<body>
+<h1>Beweeg de muis over het grijze vlak</h1>
+<div id="area"></div>
+<span id="bericht"></span>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Web Storage - voorbeeld 2</title>
+<script>
+	function showLocalStorage() {
+		var output = "<h3>LOCALSTORAGE DATA:</h3>";
+		if (localStorage) {
+			if (localStorage.length) {
+				for (var i = 0; i < localStorage.length; i++) {
+					output += localStorage.key(i) + ': '
+							+ localStorage.getItem(localStorage.key(i))
+							+ '<br />';
+				}
+			} else {
+				output += 'There is no data stored for this domain.';
+			}
+		} else {
+			output += 'Your browser does not support local storage.'
+		}
+		document.getElementById("result").innerHTML = output;
+	}
+</script>
+</head>
+<body onload="showLocalStorage()">
+<h2>localStorage opvragen</h2>
+	<div id="result"></div>
+</body>
+</html>

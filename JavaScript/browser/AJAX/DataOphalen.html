@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX: data ophalen</title>
+    <script>
+        var xmlHttp = false;
+        function loadXMLHttpRequest() {
+            try {  // Firefox/Opera/Safari/IE7+
+                xmlHttp = new XMLHttpRequest();
+            }
+            catch (e) {
+                try { // IE5
+                    xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                }
+                catch (e) {
+                    try { // IE6
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    catch (e) {
+                        alert("Deze browser ondersteunt geen AJAX");
+                    }
+                }
+            }
+        }
+
+        function dataOphalen() {
+            if (xmlHttp) {
+                xmlHttp.open("GET", "data.txt");
+                xmlHttp.onreadystatechange = function () {
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                        document.getElementById("result").innerHTML =
+                         "<pre>" + xmlHttp.responseText + "</pre>";
+                    }
+                }
+                xmlHttp.send();
+            }
+        }
+    </script>
+</head>
+<body onload="loadXMLHttpRequest()">
+    <input type="button" value="Haal data op" onclick="dataOphalen()" />
+    <div id="result">
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>reguliere expressies</title>
+<script>
+window.onload = init;
+
+function init(){
+    frm.btnControleer.onclick = controleer;
+    frm.btnControleerGetal.onclick = controleerGetal;
+}
+
+function controleerGetal(){
+    var invoer = frm.invoer.value;
+    var regexp = new RegExp("^([1-9]|1\\d|2[0-5])$");  
+    if( regexp.test(invoer) ){  // kijk na of string invoer opgebouwd is
+    // volgens het patroon van de reguliere expressie in regexp
+        alert("getal tussen 1 (incl) en 25 (incl) ingevoerd");
+    }
+    else{
+        alert("GEEN getal tussen 1 (incl) en 25 (incl) ingevoerd");
+    }
+}
+
+function controleer(){
+    var invoer = frm.invoer.value;
+    var regexp = frm.hoofdlettergevoelig.checked ? new RegExp(frm.regexp.value) :
+                     new RegExp(frm.regexp.value, "i");
+    if( regexp.test(invoer) ){
+        alert(invoer + " is opgebouwd zoals de reguliere expressie " + regexp + " beschrijft");
+    }
+    else{
+        alert(invoer + " is NIET opgebouwd volgens het patroon van de  reguliere expressie " + regexp);
+    }
+}
+</script>
+</head>
+
+<body>
+    <form name="frm">
+        <label>invoer:<input type="text" name="invoer" /></label>
+        <label>reguliere expressie:<input type="text" name="regexp"/></label>
+        <label> hoofdlettergevoelig <input type="checkbox" name="hoofdlettergevoelig" checked/></label>
+        <input type="button" value="controleer" name="btnControleer" />
+        <input type="button" value="getal ts 1 en 25?" name="btnControleerGetal" />
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding="utf-8" ?>
+<!-- een xml bestand met de gegevens van een opleiding -->
+<opleiding code='INT37'>
+    <titel>Java en XML</titel>
+    <lokatie>Beta</lokatie>
+    <startdatum>19-01-2004</startdatum>
+    <lesgever>Iuri</lesgever>
+    <deelnemers>
+        <deelnemer>Jan</deelnemer>
+        <deelnemer>Wim</deelnemer>
+        <deelnemer>Laila</deelnemer>
+    </deelnemers>
+</opleiding>

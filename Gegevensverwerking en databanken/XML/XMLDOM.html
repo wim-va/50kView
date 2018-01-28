@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>XML DOM-tree</title>
+<script src="xmlUtil.js"></script>
+<script>
+'use strict';
+const FILENAME = "XML-bestanden/itemspuur.xml";
+
+var doc = loadXMLDoc(FILENAME);
+alert("xml-rootelement: " + doc.documentElement.nodeName);
+alert("textContent: "+ doc.documentElement.textContent);
+alert("aantal childelementen van xml-rootelement: " + doc.documentElement.children.length);
+
+// element toevoegen:
+var aantal = doc.documentElement.children.length;
+var aantalNode = doc.createElement("aantal");
+var tekstNode = doc.createTextNode(aantal);
+aantalNode.appendChild(tekstNode);
+doc.documentElement.appendChild(aantalNode);
+console.log(doc.documentElement.innerHTML);
+</script>
+</head>
+<body>
+    <article>
+       <p>Een xml-document wordt op vergelijkbare wijze als een html-document voorgesteld in een DOM-tree. </p>
+       <p>Als doc een XML DOM-tree is, en n een node uit doc, zijn o.a. volgende properties typisch:
+           <dl>
+               <dt>doc.documentElement</dt>
+               <dd>het rootelement</dd>
+               <dt>n.textContent</dt>
+               <dd>concatenatie van alle tekst van de nodes in/onder n</dd>
+               <dt>n.innerText</dt>
+               <dd>concatenatie van alle tekst van de nodes in/onder n, uitgezonderd de inhoud van script en style</dd>
+          </dl>
+       </p>
+    </article>
+</body>
+</html>

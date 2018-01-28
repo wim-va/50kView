@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--Dit is een xml document van een voetbalploeg-->
+
+
+<ploeg naam="Kegel">
+  <speler id="K1">
+    <naam>Louis Verbrugge</naam>
+    <nummer>1</nummer>
+    <aantal-doelpunten>0</aantal-doelpunten>
+  </speler>
+  <speler id="K2">
+    <naam>Frans Cramers</naam>
+    <nummer>2</nummer>
+    <aantal-doelpunten>2</aantal-doelpunten>
+  </speler>
+  <speler id="K3">
+    <naam>Jos Dekoster</naam>
+    <nummer>3</nummer>
+    <aantal-doelpunten>5</aantal-doelpunten>
+  </speler>
+  <speler id="K4">
+    <naam>Gert Verheeke</naam>
+    <nummer>4</nummer>
+    <aantal-doelpunten>6</aantal-doelpunten>
+  </speler>
+  <speler id="K5">
+    <naam>Bert Dekeizer</naam>
+    <nummer>5</nummer>
+    <aantal-doelpunten>4</aantal-doelpunten>
+  </speler>
+</ploeg>

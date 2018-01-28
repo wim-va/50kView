@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>validatie</title>
+<script>
+    function geldigeGegevens(){
+        return document.forms[0].q.value != "";
+    }
+</script>
+</head>
+<body>
+    <form method="GET" action="https://www.google.be/search" onsubmit="return geldigeGegevens();" >
+        <input type="text" name="q" >
+        <input type="submit" value="zoek op google">
+    </form>
+</body>
+</html>

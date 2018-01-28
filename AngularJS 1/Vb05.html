@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<title>AngularJS: voorbeeld 5</title>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="customersCtrl">
+		bron:<a href="http://www.w3schools.com/angular/angular_http.asp">www.w3schools.com/angular/angular_http.asp</a>
+		gegevens in een lijst:
+		<ul>
+			<li ng-repeat="x in names | orderBy:'Name'">{{x.Name + ', ' +
+				x.Country }}</li>
+		</ul>
+
+		gegevens in een tabel:
+		<table>
+			<tr ng-repeat="x in names | orderBy:'Name'">
+				<td ng-if="$odd" style="background-color: #f1f1f1">{{ $index +	1 }}</td>
+				<td ng-if="$even">{{ $index + 1 }}</td>
+				<td ng-if="$odd" style="background-color: #f1f1f1">{{ x.Name }}</td>
+				<td ng-if="$even">{{ x.Name }}</td>
+				<td ng-if="$odd" style="background-color: #f1f1f1">{{ x.Country | uppercase	}}</td>
+				<td ng-if="$even">{{ x.Country | uppercase}}</td>
+			</tr>
+		</table>
+		Merk het gebruik van $index op om qde index in een tabel op te vragen
+
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('customersCtrl', function($scope, $http) {
+			//$http.get("http://www.w3schools.com/angular/customers.php")
+			// helaas... w3schools laat geen CORS meer toe :-(
+			// daarom:
+			$http.get("customers.json")
+					//.success(function(response) {  // success is deprecated
+					//	$scope.names = response.records;
+					//}
+						.then( function(response){   // functie uitgevoerd bij succesvol antwoord
+							$scope.names = response.data.records;
+					},  function(response){	// functie uitgevoerd bij error
+						alert("er liep iets fout bij het opvragen van de gegevens");
+						$scope.names =[];
+					});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Navigator</title>
+<script>
+function detectBrowser(){
+  var name = navigator.appName;
+  var codeName = navigator.appCodeName;
+  var versie = navigator.appVersion;
+  var minorVersie=navigator.appMinorVersion; //niet in FireFox, Opera
+  var browserTaal= navigator.browserLanguage; //niet in FireFox
+  var cpuClass = navigator.cpuClass; //niet in FireFox, Opera
+  var os = navigator.platform;
+  var osLanguage=navigator.systemLanguage; //niet in FireFox, Opera
+  var userAgentHeader=navigator.userAgent;
+  var userLanguageHeader=navigator.userLanguage;//niet in FireFox
+  var tekst = "Dit is browser "+name+ "("+codeName+", useragentheader:"+userAgentHeader+")\n";
+  tekst = tekst + "De versie is "+versie+"("+minorVersie+")"+"\n";
+  tekst = tekst + "De taal is "+browserTaal+"( OS: "+osLanguage+","+userLanguageHeader+")"+"\n";
+  tekst = tekst + "CPU: "+cpuClass+", os: "+os;
+  alert(tekst);
+}
+</script>
+</head>
+<body onload="detectBrowser();">
+</body>
+</html>

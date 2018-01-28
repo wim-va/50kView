@@ -1,0 +1,48 @@
+header, footer{
+  text-align: center;
+}
+body{
+	background-color: red;
+	color: white;
+}
+
+/* Style for tabs */
+#main {
+  background: red;
+  color:yellow;
+  padding:15px 20px;
+  width:600px;
+  /*border:1px solid #222;*/
+  margin:8px auto;
+}
+#main > li, #main > ul > li { list-style:none; float:left; }
+#main ul a {
+  display:block;
+  padding:6px 10px;
+  text-decoration:none!important;
+  margin:1px;
+  margin-left:0;
+  color:yellow;
+  background:blue;
+}
+#main ul a:hover {
+  color:#FFF;
+  background:#111;
+  }
+#main ul a.selected {
+  margin-bottom:0;
+  color:blue;
+  background:yellow;
+  border-bottom:1px solid yellow;
+  cursor:default;
+  }
+#main div {
+  padding:10px 10px 8px 10px;
+  *padding-top:3px;
+  *margin-top:-15px;
+  clear:left;
+  background:blue;
+  height: 300px ;
+  overflow: scroll;
+}
+#main div a { color:#000; font-weight:bold; }

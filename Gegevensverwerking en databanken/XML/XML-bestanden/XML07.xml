@@ -1,0 +1,29 @@
+<?xml version="1.0" ?> 
+
+<!-- File Name: XML07.xml -->
+
+<inventaris
+	xmlns:boek="http://www.JSPOnline.com/boeken"
+	xmlns:cd="http://www.JSPOnline.com/cds">
+	
+	<boek:element Status="in">
+		<boek:titel>XML Step by step</boek:titel>
+		<boek:auteur>Michael J. Young</boek:auteur>
+		<boek:prijs>50 €</boek:prijs>
+	</boek:element>
+	<cd:element>
+		<cd:titel>Viool Concert in D</cd:titel>
+		<cd:componist>Beethoven</cd:componist>
+		<cd:prijs>15 €</cd:prijs>
+	</cd:element>	
+	<boek:element Status="uit">
+		<boek:titel>Internet and WWW: How to program</boek:titel>
+		<boek:auteur>Deitel, Deitel and Nieto</boek:auteur>
+		<boek:prijs>58.20 €</boek:prijs>
+	</boek:element>
+	<cd:element>
+		<cd:titel>Clouseau</cd:titel>
+		<cd:componist>Wouters</cd:componist>
+		<cd:prijs>20.20 €</cd:prijs>
+	</cd:element>	
+</inventaris>

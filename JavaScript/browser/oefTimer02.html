@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>oefening timers (2)</title>
+<script>
+'use strict';
+const KLEUR1 = "pink", KLEUR2 = "yellow";
+var interval;
+
+window.onload = init;
+
+function init(){
+    document.getElementById("btnStart").onclick = startColor;
+    document.getElementById("btnStop").onclick = stopColor;
+}
+
+function startColor(){
+    interval = setInterval(setColor, 300);
+}
+
+function setColor() {
+    var body = document.body;
+    body.style.backgroundColor = body.style.backgroundColor == KLEUR1 ? KLEUR2 : KLEUR1;
+}
+
+function stopColor() {
+    clearInterval(interval);
+}
+</script>
+</head>
+<body>
+    <input type="button" value="start" id="btnStart" />
+    <input type="button" value="stop" id="btnStop" />
+</body>
+</html>

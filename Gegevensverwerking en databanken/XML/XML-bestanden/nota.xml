@@ -1,0 +1,27 @@
+<?xml version = "1.0" standalone = "yes"?>
+<!-- nota.xml -->
+<memos>
+ <memo id="c1" xml:lang='nl-BE'>
+   <voor>Carlos</voor>
+   <van>Jef</van>
+   <datum zone="EST">
+         <dag>9</dag>
+         <maand>5</maand>
+         <jaar>2001</jaar>
+    </datum>
+   <titel>XML</titel>
+   <tekst>Carlos, ik begin vandaag met de cursus XML</tekst>
+ </memo>
+ <memo id="c2" xml:lang="nl-BE">
+   <voor>Jef</voor>
+   <van>Carlos</van>
+   <datum zone="EST">
+         <dag>9</dag>
+         <maand>5</maand>
+         <jaar>2001</jaar>
+   </datum>
+   <antwoord idref="c1" />
+   <titel>Re:XML</titel>
+   <tekst>Dat is heel goed. Ik verhoog meteen je loon.</tekst>
+ </memo>
+</memos>

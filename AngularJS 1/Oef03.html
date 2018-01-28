@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Angular JS: oefening validatie</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="Oef03.js"></script>
+</head>
+
+<body>
+    <div ng-app="appOef03" ng-controller="validateCtrl">
+        <form name="frm" novalidate>
+            <label for="score">Score (0-20): </label><input type="number" min="0" max="20" name="score" required ng-model="score" pattern="^\d+$">
+            <span style="color:red; font-weight: bolder;" ng-show="frm.score.$error.required">Het scoreveld is verplicht.</span>
+            <span style="color:red; font-weight: bolder;" ng-show="frm.score.$error.number">Score moet een getal zijn.</span>            
+            <span style="color:red; font-weight: bolder;" ng-show="frm.score.$error.pattern">Score moet een geheel getal zijn.</span>            
+            <!-- In browsers that follow the HTML5 specification, input[number] does not work as expected.
+             If a non-number is entered in the input, the browser will report the value as an empty string -->
+            <span style="color:red; font-weight: bolder;" ng-show="frm.score.$error.min">Score moet minstens 0 zijn.</span>
+            <span style="color:red; font-weight: bolder;" ng-show="frm.score.$error.max">Score moet strikt kleiner zijn dan 21.</span>
+            <input type="submit" value="OK" ng-disabled="frm.score.$invalid"/>
+        </form>
+    </div>
+
+</body>
+
+</html>
